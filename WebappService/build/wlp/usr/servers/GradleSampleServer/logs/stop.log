@@ -1,0 +1,13 @@
+
+arg0=GradleSampleServer
+arg1=--pid=
+arg2=--stop
+exit=1
+
+                 Java home:  /usr/lib/jvm/java-11-openjdk-amd64
+              Install root:  /home/andy/openLiberty/Survey-app/WebappService/build/wlp/
+          System libraries:  /home/andy/openLiberty/Survey-app/WebappService/build/wlp/lib/
+                 User root:  /home/andy/openLiberty/Survey-app/WebappService/build/wlp/usr/
+                    Config:  /home/andy/openLiberty/Survey-app/WebappService/build/wlp/usr/servers/GradleSampleServer/
+                    Output:  /home/andy/openLiberty/Survey-app/WebappService/build/wlp/usr/servers/GradleSampleServer/
+

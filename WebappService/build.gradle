@@ -55,7 +55,7 @@ dependencies {
 // tag::ext[]
 ext {
     appName = project.name
-    testServerHttpPort = 9080
+    testServerHttpPort = 8080
     testServerHttpsPort = 9443
     warContext = appName
 }

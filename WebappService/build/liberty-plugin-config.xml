@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<liberty-plugin-config version="2.0">
+  <installDirectory>/home/andy/openLiberty/Survey-app/WebappService/build/wlp</installDirectory>
+  <assemblyArtifact>
+    <groupId>io.openliberty</groupId>
+    <artifactId>openliberty-runtime</artifactId>
+    <version>[17.0.0.4,)</version>
+    <type>zip</type>
+  </assemblyArtifact>
+  <assemblyArchive>/home/andy/.gradle/caches/modules-2/files-2.1/io.openliberty/openliberty-runtime/19.0.0.10/53b0f2ffc87d5e90157834fc87800976c77dc895/openliberty-runtime-19.0.0.10.zip</assemblyArchive>
+  <servers>
+    <server>
+      <userDirectory>/home/andy/openLiberty/Survey-app/WebappService/build/wlp/usr</userDirectory>
+      <serverDirectory>/home/andy/openLiberty/Survey-app/WebappService/build/wlp/usr/servers/GradleSampleServer</serverDirectory>
+      <serverOutputDirectory>/home/andy/openLiberty/Survey-app/WebappService/build/wlp/usr/servers/GradleSampleServer</serverOutputDirectory>
+      <serverName>GradleSampleServer</serverName>
+      <configFile>/home/andy/openLiberty/Survey-app/WebappService/src/main/liberty/config/server.xml</configFile>
+      <bootstrapProperties>
+        <default.http.port>9080</default.http.port>
+        <default.https.port>9443</default.https.port>
+        <app.context.root>GradleSample</app.context.root>
+      </bootstrapProperties>
+      <looseApplication>true</looseApplication>
+      <stripVersion>false</stripVersion>
+      <applications>
+        <application>
+          <appsDirectory>apps</appsDirectory>
+          <applicationFilename>GradleSample.war.xml</applicationFilename>
+          <warSourceDirectory>src/main/webapp</warSourceDirectory>
+          <projectType>war</projectType>
+        </application>
+      </applications>
+    </server>
+  </servers>
+</liberty-plugin-config>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive>
+    <dir sourceOnDisk="/home/andy/openLiberty/Survey-app/WebappService/build/classes/java/main" targetInArchive="/WEB-INF/classes/"/>
+    <file sourceOnDisk="/home/andy/openLiberty/Survey-app/WebappService/build/tmp/META-INF/MANIFEST.MF" targetInArchive="/META-INF/MANIFEST.MF"/>
+</archive>

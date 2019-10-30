@@ -1,0 +1,34 @@
+********************************************************************************
+product = Open Liberty 19.0.0.10 (wlp-1.0.33.cl191020191002-0300)
+wlp.install.dir = /home/andy/openLiberty/Survey-app/WebappService/build/wlp/
+java.home = /usr/lib/jvm/java-11-openjdk-amd64
+java.version = 11.0.4
+java.runtime = OpenJDK Runtime Environment (11.0.4+11-post-Ubuntu-1ubuntu218.04.3)
+os = Linux (4.15.0-66-generic; amd64) (en_US)
+process = 3584@andy-G5-5587
+********************************************************************************
+[10/30/19, 14:45:51:666 EDT] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0001I: The server GradleSampleServer has been launched.
+[10/30/19, 14:45:52:323 EDT] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           I CWWKE0002I: The kernel started after 0.786 seconds
+[10/30/19, 14:45:52:376 EDT] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            I CWWKF0007I: Feature update started.
+[10/30/19, 14:45:52:832 EDT] 00000019 com.ibm.ws.app.manager.internal.monitor.DropinMonitor        A CWWKZ0058I: Monitoring dropins for applications.
+[10/30/19, 14:45:52:916 EDT] 00000025 com.ibm.ws.tcpchannel.internal.TCPChannel                    I CWWKO0219I: TCP Channel defaultHttpEndpoint has been started and is now listening for requests on host *  (IPv6) port 9080.
+[10/30/19, 14:45:52:969 EDT] 0000002a com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Starting application GradleSample.
+[10/30/19, 14:45:52:969 EDT] 0000002a bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: The GradleSample application is using the loose application definition at the /home/andy/openLiberty/Survey-app/WebappService/build/wlp/usr/servers/GradleSampleServer/apps/GradleSample.war.xml location.
+[10/30/19, 14:45:53:101 EDT] 0000002a com.ibm.ws.session.WASSessionCore                            I SESN8501I: The session manager did not find a persistent storage location; HttpSession objects will be stored in the local application server's memory.
+[10/30/19, 14:45:53:108 EDT] 0000002a com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: Loading Web Module: GradleSample.
+[10/30/19, 14:45:53:110 EDT] 0000002a com.ibm.ws.webcontainer                                      I SRVE0250I: Web Module GradleSample has been bound to default_host.
+[10/30/19, 14:45:53:110 EDT] 0000002a com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Web application available (default_host): http://129.3.127.108:9080/GradleSample/
+[10/30/19, 14:45:53:116 EDT] 0000002a com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0001I: Application GradleSample started in 0.147 seconds.
+[10/30/19, 14:45:53:141 EDT] 0000002c com.ibm.ws.session.WASSessionCore                            I SESN0176I: A new session context will be created for application key default_host/GradleSample
+[10/30/19, 14:45:53:148 EDT] 0000002c com.ibm.ws.util                                              I SESN0172I: The session manager is using the Java default SecureRandom implementation for session ID generation.
+[10/30/19, 14:45:53:157 EDT] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0012I: The server installed the following features: [servlet-4.0].
+[10/30/19, 14:45:53:158 EDT] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            I CWWKF0008I: Feature update completed in 0.836 seconds.
+[10/30/19, 14:45:53:158 EDT] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0011I: The GradleSampleServer server is ready to run a smarter planet. The GradleSampleServer server started in 1.623 seconds.
+[10/30/19, 14:45:53:424 EDT] 0000002d com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: A configuration file for a web server plugin was automatically generated for this server at /home/andy/openLiberty/Survey-app/WebappService/build/wlp/usr/servers/GradleSampleServer/logs/state/plugin-cfg.xml.
+[10/30/19, 14:47:27:953 EDT] 00000013 com.ibm.ws.kernel.launch.internal.ServerCommandListener      A CWWKE0055I: Server shutdown requested on Wednesday, October 30, 2019 at 2:47 PM. The server GradleSampleServer is shutting down.
+[10/30/19, 14:47:27:955 EDT] 00000041 com.ibm.ws.runtime.update.internal.RuntimeUpdateManagerImpl  A CWWKE1100I: Waiting for up to 30 seconds for the server to quiesce.
+[10/30/19, 14:47:28:259 EDT] 0000003d com.ibm.ws.tcpchannel.internal.TCPChannel                    I CWWKO0220I: TCP Channel defaultHttpEndpoint has stopped listening for requests on host *  (IPv6) port 9080.
+[10/30/19, 14:47:28:262 EDT] 0000003d com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Web application removed (default_host): http://129.3.127.108:9080/GradleSample/
+[10/30/19, 14:47:29:265 EDT] 00000041 com.ibm.ws.runtime.update.internal.RuntimeUpdateManagerImpl  I CWWKE1101I: Server quiesce complete.
+[10/30/19, 14:47:29:282 EDT] 00000032 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: The application GradleSample has stopped successfully.
+[10/30/19, 14:47:30:327 EDT] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0036I: The server GradleSampleServer stopped after 1 minutes, 38.791 seconds.

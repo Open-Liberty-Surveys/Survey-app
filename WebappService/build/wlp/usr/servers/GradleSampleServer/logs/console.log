@@ -1,0 +1,12 @@
+Launching GradleSampleServer (Open Liberty 19.0.0.10/wlp-1.0.33.cl191020191002-0300) on OpenJDK 64-Bit Server VM, version 11.0.4+11-post-Ubuntu-1ubuntu218.04.3 (en_US)
+[AUDIT   ] CWWKE0001I: The server GradleSampleServer has been launched.
+[AUDIT   ] CWWKZ0058I: Monitoring dropins for applications.
+[AUDIT   ] CWWKT0016I: Web application available (default_host): http://129.3.127.108:9080/GradleSample/
+[AUDIT   ] CWWKZ0001I: Application GradleSample started in 0.178 seconds.
+[AUDIT   ] CWWKF0012I: The server installed the following features: [servlet-4.0].
+[AUDIT   ] CWWKF0011I: The GradleSampleServer server is ready to run a smarter planet. The GradleSampleServer server started in 1.007 seconds.
+[AUDIT   ] CWWKE0055I: Server shutdown requested on Wednesday, October 30, 2019 at 2:59 PM. The server GradleSampleServer is shutting down.
+[AUDIT   ] CWWKE1100I: Waiting for up to 30 seconds for the server to quiesce.
+[AUDIT   ] CWWKT0017I: Web application removed (default_host): http://129.3.127.108:9080/GradleSample/
+[AUDIT   ] CWWKZ0009I: The application GradleSample has stopped successfully.
+[AUDIT   ] CWWKE0036I: The server GradleSampleServer stopped after 11 minutes, 40.92 seconds.
