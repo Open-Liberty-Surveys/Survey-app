@@ -5,5 +5,5 @@
 
     <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint"  host="*" />
 
-    <webApplication id="GradleSample" location="GradleSample.war" contextRoot="${app.context.root}" />
+    <webApplication id="SurveyMeWebApp" location="SurveyMeWebApp.war" contextRoot="${app.context.root}" />
 </server>
