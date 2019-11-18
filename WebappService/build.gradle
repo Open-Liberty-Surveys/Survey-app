@@ -6,6 +6,12 @@ plugins {
     //id 'org.ysb33r.nodejs.npm' version '0.6.2'
 }
 
+allprojects {
+    repositories {
+         mavenCentral()
+    }
+}
+
 version = '1.0-SNAPSHOT'
 
 description = "SurveyMe front end"
@@ -46,10 +52,12 @@ liberty {
 }
 
 war {
-    dependsOn 'cpySrc'
+//  doFirst {
+//      copy {
+//           from "$projectDir/
+//      }
+//  }
     archiveName = "${baseName}.${extension}"
-    webAppDir = new File("npm_build/src")
-    webAppDirName = "npm_build/src"
     println ("WebAppDir "+getWebAppDir())
     println ("WebAppDirName "+getWebAppDirName())
     
@@ -59,19 +67,22 @@ node {
     npmVersion '6.12.0'
     download = true
 }
-task npmBuild (type: NpmTask) {
-    npmCommand = 'run'
-    args = ['--prod']
-}
-task ngBuild(type: NpmTask) {
-   args = ['run', 'build', '--prod']
-}
+
+//task ngBuild(type: NpmTask) {
+//    setWorkingDir 'src/main/webbappsrc'
+//    args = ['run', 'build', '--prod']
+//}
 
 task cpySrc (type: Copy) {
-    dependsOn 'npm_build'
-    from 'src/main/webapp/dist/webapp/'
-    into 'npm_build'
-    outputs.dir("npm_build/src")
+    from 'webappsrc/dist'
+    into 'src/main'
+    outputs.dir("src/main/webapp")
+}
+task deleteOld(type: Delete) {
+    doFirst {
+        delete "$projectDir/src/main/webapp"
+        delete "$projectDir/webappsrc/dist/webapp"
+    }
 }
 task url {
     doLast {println frontendURL + '/login'}
@@ -84,8 +95,11 @@ gradle.taskGraph.whenReady { graph ->
     }
 }
 
-build.dependsOn 'npm_build'
+war.dependsOn 'cpySrc'
+cpySrc.dependsOn ':webappsrc:npm_run_build'
+build.dependsOn 'cpySrc'
 build.finalizedBy 'libertyCreate'
-
 clean.dependsOn 'libertyStop'
+clean.finalizedBy 'deleteOld'
+//clean.finalizedBy ':webappsrc:ngClean'
 libertyPackage.dependsOn 'libertyStop'
