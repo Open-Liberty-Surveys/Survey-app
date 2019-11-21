@@ -9,7 +9,7 @@
   </h2>
 
 
-  <div id="chart"></div>
+  <div id="{{survey.id}}"></div>
 
   <div *ngIf="!hasAnswered(survey)">
     <p *ngFor="let option of survey.options">
