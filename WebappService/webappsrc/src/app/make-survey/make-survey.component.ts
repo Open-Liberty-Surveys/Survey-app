@@ -56,7 +56,8 @@ export class MakeSurveyComponent implements OnInit {
       user: user.name,
       question: this.question,
       options: this.answers,
-      answers: []
+      answers: [],
+      id: 4
     });
   }
   constructor() { }

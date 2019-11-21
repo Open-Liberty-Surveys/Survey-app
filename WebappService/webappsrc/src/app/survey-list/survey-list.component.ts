@@ -17,9 +17,11 @@ export class SurveyListComponent implements OnInit {
       user: user.name,
       option
     });
-    document.getElementById('chart').innerHTML =
+    document.getElementById(survey.id).innerHTML =
       '<div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>';
-    new BarGraphComponent().chart.render();
+    const bgc = new BarGraphComponent();
+    bgc.setData(survey);
+    bgc.chart.render();
   }
   hasAnswered(survey): boolean {
     let ans = false;
