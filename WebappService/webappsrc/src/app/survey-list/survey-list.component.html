@@ -1,0 +1,21 @@
+<div *ngFor="let survey of surveys">
+
+  <h3>
+    User: {{ survey.user }}
+  </h3>
+
+  <h2 *ngIf="survey.question">
+    Question: {{ survey.question }}
+  </h2>
+
+
+  <div id="chart"></div>
+
+  <div *ngIf="!hasAnswered(survey)">
+    <p *ngFor="let option of survey.options">
+      <button (click)="answered(option, survey)">
+        {{ option }}
+      </button>
+    </p>
+  </div>
+</div>

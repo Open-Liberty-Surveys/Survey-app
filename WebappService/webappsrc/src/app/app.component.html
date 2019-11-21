@@ -1,0 +1,20 @@
+<div *ngIf="user.loggedIn">
+  <nav>
+    <app-top-bar></app-top-bar>
+  </nav>
+</div>
+
+<router-outlet></router-outlet>
+
+<div *ngIf="!user.loggedIn && user.authenticated">
+  <nav>
+    <button (click)="login(true)" routerLink="SurveyList" routerLinkActive="active">Login</button>
+  </nav>
+</div>
+
+<div *ngIf="!user.loggedIn && !user.authenticated">
+  <nav>
+    <button (click)="display()">Login</button>
+  </nav>
+</div>
+{{message}}
