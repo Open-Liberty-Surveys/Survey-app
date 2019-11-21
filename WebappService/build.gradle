@@ -11,7 +11,9 @@ allprojects {
          mavenCentral()
     }
 }
-
+subprojects {
+    apply plugin: 'com.moowork.node'
+}
 version = '1.0-SNAPSHOT'
 
 description = "SurveyMe front end"
@@ -52,11 +54,6 @@ liberty {
 }
 
 war {
-//  doFirst {
-//      copy {
-//           from "$projectDir/
-//      }
-//  }
     archiveName = "${baseName}.${extension}"
     println ("WebAppDir "+getWebAppDir())
     println ("WebAppDirName "+getWebAppDirName())
