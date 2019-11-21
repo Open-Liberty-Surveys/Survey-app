@@ -1,0 +1,15 @@
+<label>Enter Survey Question: </label>
+<input type = "text" #box1 (keyup)="onKey1(box1.value)">
+
+<label>Enter Survey Answers: </label>
+<div *ngFor="let i of numAns">
+
+  <input type = "text" #box2 (keyup)="onKey2(box2.value,i)"><br>
+
+</div>
+
+<button (click)="addAnswer()">+</button>
+<button (click)="subtractAnswer()">-</button><br/><br><br/>
+
+<button (click)="resetAnswers()">clear</button>
+<button (click)="MakeSurvey();resetAnswers()">Make Survey</button>
