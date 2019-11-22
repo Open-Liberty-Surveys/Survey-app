@@ -31,7 +31,7 @@ dependencies {
 
     libertyRuntime group:'io.openliberty', name:'openliberty-runtime', version:'[17.0.0.4,)'
 
-    implementation files('C:/Users/erics/Desktop/CS/External Jars/javax.ws.rs-api-2.0.jar')
+    compile 'javax.ws.rs:javax.ws.rs-api:2.1.1'
 }
 
 ext{
