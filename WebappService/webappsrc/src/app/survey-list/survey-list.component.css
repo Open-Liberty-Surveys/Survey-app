@@ -3,3 +3,30 @@
   Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
 }
+div.inline { float:left; }
+.clearFix {overflow:auto;}
+.clearBoth { clear:both; }
+.share-bubble {
+  background-color: #fff;
+  box-shadow: 0 0 6px #B2B2B2;
+  display: inline-block;
+  padding: 0px 15px;
+  position: relative;
+  vertical-align: top;
+  float: left;
+  margin: 0px 5px 5px 5px;
+}
+.surveyBar{
+  box-shadow: 0 0 6px #B2B2B2;
+  display: inline-block;
+  padding: 0 10px;
+  position: relative;
+  vertical-align: top;
+  float: left;
+  margin: 5px 5px 0px 5px;
+  width:100%;
+  background:#F2EFF7;
+}
+.holder{
+  margin: 5px 5px 20px 5px;
+}

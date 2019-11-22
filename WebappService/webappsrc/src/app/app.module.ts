@@ -12,14 +12,16 @@ import { LoginComponent } from './login/login.component';
 import { FriendsListComponent } from './friends-list/friends-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BarGraphComponent } from './bar-graph/bar-graph.component';
+import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
   { path: '',   redirectTo: '/Login', pathMatch: 'full' },
   { path: 'Login', component: LoginComponent},
   { path: 'SurveyList', component: SurveyListComponent},
   { path: 'MakeSurvey', component: MakeSurveyComponent},
-  // { path: 'Friends', component: FriendsListComponent},
-  { path: 'Friends', component: BarGraphComponent},
+  { path: 'Friends', component: FriendsListComponent},
+  { path: 'Search', component: SearchComponent},
+  //{ path: 'Search', component: BarGraphComponent},
   { path: 'Profile', component: ProfileComponent},
 ];
 
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     LoginComponent,
     FriendsListComponent,
     ProfileComponent,
-    BarGraphComponent
+    BarGraphComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

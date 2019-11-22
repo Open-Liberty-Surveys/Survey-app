@@ -1,20 +1,36 @@
-<div *ngFor="let survey of surveys">
+<div *ngFor="let survey of surveys" style="display: inline-flex; width: 49.21%;">
 
-  <h3>
-    User: {{ survey.user }}
-  </h3>
+  <div class = "holder" style="height: 300px; width: 100%;">
 
-  <h2 *ngIf="survey.question">
-    Question: {{ survey.question }}
-  </h2>
+    <div class = "surveyBar">
 
-  <div id="{{survey.id}}"></div>
+      <div style="display: inline-flex;">
+        <div style="margin: 10px 15px 0px 0px;">
+          <img src = "assets/{{survey.user}}.png" alt = "assets/{{survey.user}}.png" width="45" height="45" style="border-radius: 50%;">
+        </div>
 
-  <div *ngIf="!hasAnswered(survey)">
-    <p *ngFor="let option of survey.options">
-      <button (click)="answered(option, survey)">
-        {{ option }}
-      </button>
-    </p>
-  </div>
+        <h3>
+          User: {{ survey.user }}
+        </h3>
+      </div>
+
+      <h2>
+        Question: {{ survey.question }}
+      </h2>
+    </div>
+
+    <div class = "share-bubble" style="height: 200px; width: 100%">
+
+      <div id="{{survey.id}}"></div>
+
+      <div *ngIf="!hasAnswered(survey)">
+        <p *ngFor="let option of survey.options" style="display: inline-flex; width: 40%;">
+          <button (click)="answered(option, survey)">
+            {{ option }}
+          </button>
+        </p>
+      </div>
+
+    </div>
+  </div >
 </div>

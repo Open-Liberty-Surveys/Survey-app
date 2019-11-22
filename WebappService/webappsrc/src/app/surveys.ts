@@ -2,7 +2,7 @@ export const surveys = [
   {
     user: 'Andy',
     question: 'Favorite Color?',
-    options: ['Blue', 'Red', 'Green', 'Yellow'],
+    options: ['Blue', 'Red', 'Green', 'Yellow', 'Purple', 'Orange'],
     answers: [
       {
       user: 'Andy',

@@ -11,16 +11,20 @@ import { BarGraphComponent } from '../bar-graph/bar-graph.component';
 
 export class SurveyListComponent implements OnInit {
   surveys = surveys;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.body.setAttribute('bgcolor','#F9F9E3');
+  }
   answered(option, survey) {
     survey.answers.push({
       user: user.name,
       option
     });
+    console.log(survey.id);
     document.getElementById(survey.id).innerHTML =
-      '<div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>';
+      '<div id="chartContainer" style="height: 200px; width: 90%;"></div>';
     const bgc = new BarGraphComponent();
     bgc.setData(survey);
+    bgc.createGraph();
     bgc.chart.render();
   }
   hasAnswered(survey): boolean {

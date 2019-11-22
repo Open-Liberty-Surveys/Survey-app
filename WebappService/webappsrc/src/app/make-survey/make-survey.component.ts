@@ -23,8 +23,10 @@ export class MakeSurveyComponent implements OnInit {
     this.answers[index] = value;
   }
   addAnswer() {
-    this.num++;
-    this.numAns[this.num] = this.num;
+    if (this.num < 5) {
+      this.num++;
+      this.numAns[this.num] = this.num;
+    }
   }
   subtractAnswer() {
     if (this.num > 1) {

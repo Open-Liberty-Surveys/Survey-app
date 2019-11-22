@@ -3,4 +3,5 @@ export const user = {
   password: 'login',
   loggedIn: false,
   authenticated: false,
+  picture: './profile-pictures/Eric.png'
 };
