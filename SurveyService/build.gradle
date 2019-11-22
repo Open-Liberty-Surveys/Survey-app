@@ -36,8 +36,8 @@ dependencies {
 
 ext{
     appName = project.name
-    httpPort = 8080
-    httpsPort = 9443
+    httpPort = 8090
+    httpsPort = 9453
     warContext = appName
 }
 
