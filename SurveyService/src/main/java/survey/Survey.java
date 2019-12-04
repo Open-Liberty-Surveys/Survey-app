@@ -9,36 +9,33 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Survey {
-    
-private final String USERNAME = "root";
-private final String PASSWORD = "root";
-private final String CONN = "jdbc:mysql://localhost/surveyme";    
+
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
+    private static final String CONN = "jdbc:mysql://localhost/surveyme";
         
     
-public static void getConnection() throws SQLException{
+    private static Connection getConnection() throws SQLException{
     
     
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection(CONN,USERNAME,PASSWORD);
-    }
-        catch (ClassNotFoundException|SQLException ex){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection(CONN,USERNAME,PASSWORD);
+        }
+            catch (ClassNotFoundException|SQLException ex) {
             ex.printStackTrace();
-       
-
-}
-    return null;
-
-}
+        }
+        return null;
+    }
 
     
     public static void main(String[] args){
 
         
-String username = "";
-String question = "";
-String[] options = {};
-String[][] answers = {{}};          
+    String username = "";
+    String question = "";
+    String[] options = {};
+    String[][] answers = {{}};
         
         
         
@@ -47,11 +44,12 @@ String[][] answers = {{}};
         System.out.println("username?");
         username = input.nextLine();
         
-        
+        /*
         Connection con = this.getConnection();
         Statement statement = con.createStatement();
         statement.executeUpdate("INSERT INTO surveys " + "VALUES ('' , '' , '' , '')");
         System.out.println("connected");
+         */
     }
     
     
