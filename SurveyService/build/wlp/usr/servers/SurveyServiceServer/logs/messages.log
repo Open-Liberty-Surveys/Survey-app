@@ -1,0 +1,37 @@
+********************************************************************************
+product = Open Liberty 19.0.0.11 (wlp-1.0.34.cl191120191031-0300)
+wlp.install.dir = C:/Users/erics/Desktop/Survey/Survey-app/SurveyService/build/wlp/
+java.home = C:\Program Files\Java\jdk-12.0.1
+java.version = 12.0.1
+java.runtime = Java(TM) SE Runtime Environment (12.0.1+12)
+os = Windows 10 (10.0; amd64) (en_US)
+process = 9176@LAPTOP-IO3QG72H
+********************************************************************************
+[12/4/19, 8:11:02:721 EST] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0001I: The server SurveyServiceServer has been launched.
+[12/4/19, 8:11:34:497 EST] 00000017 com.ibm.ws.config.xml.internal.ServerXMLConfiguration        A CWWKG0093A: Processing configuration drop-ins resource: C:\Users\erics\Desktop\Survey\Survey-app\SurveyService\build\wlp\usr\servers\SurveyServiceServer\configDropins\defaults\install_apps_configuration_1491924271.xml
+[12/4/19, 8:11:34:910 EST] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           I CWWKE0002I: The kernel started after 37.15 seconds
+[12/4/19, 8:11:37:675 EST] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            I CWWKF0007I: Feature update started.
+[12/4/19, 8:11:49:094 EST] 00000035 com.ibm.ws.app.manager.internal.monitor.DropinMonitor        A CWWKZ0058I: Monitoring dropins for applications.
+[12/4/19, 8:11:49:219 EST] 00000033 com.ibm.ws.annocache.service                                 I OSGi Work Path [ C:\Users\erics\Desktop\Survey\Survey-app\SurveyService\build\wlp\usr\servers\SurveyServiceServer\workarea\org.eclipse.osgi\41\data ]
+[12/4/19, 8:11:49:797 EST] 00000024 com.ibm.ws.tcpchannel.internal.TCPChannel                    I CWWKO0219I: TCP Channel defaultHttpEndpoint has been started and is now listening for requests on host *  (IPv6) port 8090.
+[12/4/19, 8:11:49:969 EST] 00000027 com.ibm.ws.app.manager.AppMessageHelper                      W CWWKZ0014W: The application GradleSample could not be started as it could not be found at location GradleSample.war.
+[12/4/19, 8:11:50:000 EST] 00000026 com.ibm.ws.app.manager.AppMessageHelper                      I CWWKZ0018I: Starting application SurveyService.
+[12/4/19, 8:11:50:000 EST] 00000026 bm.ws.app.manager.war.internal.WARDeployedAppInfoFactoryImpl I CWWKZ0134I: The SurveyService application is using the loose application definition at the C:\Users\erics\Desktop\Survey\Survey-app\SurveyService\build\wlp\usr\servers\SurveyServiceServer\apps\SurveyService.war.xml location.
+[12/4/19, 8:11:50:766 EST] 00000026 com.ibm.ws.session.WASSessionCore                            I SESN8501I: The session manager did not find a persistent storage location; HttpSession objects will be stored in the local application server's memory.
+[12/4/19, 8:11:50:782 EST] 00000026 com.ibm.ws.webcontainer.osgi.webapp.WebGroup                 I SRVE0169I: Loading Web Module: SurveyService.
+[12/4/19, 8:11:50:782 EST] 00000026 com.ibm.ws.webcontainer                                      I SRVE0250I: Web Module SurveyService has been bound to default_host.
+[12/4/19, 8:11:50:782 EST] 00000026 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0016I: Web application available (default_host): http://129.3.216.174:8090/SurveyService/
+[12/4/19, 8:11:50:782 EST] 00000026 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0001I: Application SurveyService started in 0.782 seconds.
+[12/4/19, 8:11:50:922 EST] 00000031 com.ibm.ws.session.WASSessionCore                            I SESN0176I: A new session context will be created for application key default_host/SurveyService
+[12/4/19, 8:11:50:953 EST] 00000031 com.ibm.ws.util                                              I SESN0172I: The session manager is using the Java default SecureRandom implementation for session ID generation.
+[12/4/19, 8:11:51:000 EST] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0012I: The server installed the following features: [jaxrs-2.0, jaxrsClient-2.0, json-1.0, servlet-3.1].
+[12/4/19, 8:11:51:000 EST] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            I CWWKF0008I: Feature update completed in 16.099 seconds.
+[12/4/19, 8:11:51:000 EST] 00000022 com.ibm.ws.kernel.feature.internal.FeatureManager            A CWWKF0011I: The SurveyServiceServer server is ready to run a smarter planet. The SurveyServiceServer server started in 53.239 seconds.
+[12/4/19, 8:11:51:906 EST] 00000023 com.ibm.ws.webcontainer.osgi.mbeans.PluginGenerator          I SRVE9103I: A configuration file for a web server plugin was automatically generated for this server at C:\Users\erics\Desktop\Survey\Survey-app\SurveyService\build\wlp\usr\servers\SurveyServiceServer\logs\state\plugin-cfg.xml.
+[12/4/19, 9:32:13:073 EST] 00000014 com.ibm.ws.kernel.launch.internal.ServerCommandListener      A CWWKE0055I: Server shutdown requested on Wednesday, December 4, 2019 at 9:32 AM. The server SurveyServiceServer is shutting down.
+[12/4/19, 9:32:13:074 EST] 000001a7 com.ibm.ws.runtime.update.internal.RuntimeUpdateManagerImpl  A CWWKE1100I: Waiting for up to 30 seconds for the server to quiesce.
+[12/4/19, 9:32:13:092 EST] 00000090 com.ibm.ws.tcpchannel.internal.TCPChannel                    I CWWKO0220I: TCP Channel defaultHttpEndpoint has stopped listening for requests on host *  (IPv6) port 8090.
+[12/4/19, 9:32:13:094 EST] 00000090 com.ibm.ws.http.internal.VirtualHostImpl                     A CWWKT0017I: Web application removed (default_host): http://129.3.216.174:8090/SurveyService/
+[12/4/19, 9:32:13:094 EST] 000001a7 com.ibm.ws.runtime.update.internal.RuntimeUpdateManagerImpl  I CWWKE1101I: Server quiesce complete.
+[12/4/19, 9:32:13:163 EST] 00000126 com.ibm.ws.app.manager.AppMessageHelper                      A CWWKZ0009I: The application SurveyService has stopped successfully.
+[12/4/19, 9:32:13:514 EST] 00000001 com.ibm.ws.kernel.launch.internal.FrameworkManager           A CWWKE0036I: The server SurveyServiceServer stopped after 1 hours, 21 minutes, 15.759 seconds.

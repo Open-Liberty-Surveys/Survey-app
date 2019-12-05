@@ -11,7 +11,8 @@ export class LoginComponent implements OnInit {
   password = '';
   username = '';
   constructor() { }
-  ngOnInit() {
+  ngOnInit(): void {
+    document.body.setAttribute('bgcolor','#F9F9E3');
   }
   login(bool) {
     user.loggedIn = bool;

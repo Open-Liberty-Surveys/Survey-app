@@ -31,3 +31,10 @@ div.inline { float:left; }
 .holder{
   margin: 5px 5px 20px 5px;
 }
+
+button.b1{
+  margin: 15px 10px 0px 0px;
+  height: 40px;
+  background-color: transparent;
+  outline: none;
+}

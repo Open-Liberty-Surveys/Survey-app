@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { user } from './user';
 
 @Component({
@@ -16,5 +16,8 @@ export class AppComponent {
   }
   display() {
     this.message = 'Incorrect username/password';
+  }
+  signingUp(bool) {
+    user.signingIn = bool;
   }
 }

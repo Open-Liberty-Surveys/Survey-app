@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {user} from '../user';
-import {surveys} from '../surveys';
+import {SurveysService} from '../surveys';
 
 @Component({
   selector: 'app-make-survey',
   templateUrl: './make-survey.component.html',
+  providers: [ SurveysService ],
   styleUrls: ['./make-survey.component.css']
 })
 export class MakeSurveyComponent implements OnInit {
@@ -16,6 +17,11 @@ export class MakeSurveyComponent implements OnInit {
   numAns = [0, 1];
   elements = {};
   i = 0;
+
+  ngOnInit() {
+  }
+  constructor(private surveysService: SurveysService) {}
+
   onKey1(value) {
     this.question = value;
   }
@@ -54,17 +60,17 @@ export class MakeSurveyComponent implements OnInit {
     }
   }
   MakeSurvey() {
-    const id = this.hashString(this.question+(new Date().getTime())) + '';
-    console.log(id);
-    surveys.push({
+    const id1 = this.hashString(this.question+(new Date().getTime())) + '';
+    console.log(id1);
+    const newSurvey = {
       user: user.name,
       question: this.question,
       options: this.answers,
       answers: [],
-      id: id
-    });
+      id: id1
+    };
+    this.surveysService.postSurvey(newSurvey);
   }
-  constructor() { }
 
   hashString(str){
     let hash = 0;
@@ -74,8 +80,4 @@ export class MakeSurveyComponent implements OnInit {
     }
     return hash;
   }
-
-  ngOnInit() {
-  }
-
 }

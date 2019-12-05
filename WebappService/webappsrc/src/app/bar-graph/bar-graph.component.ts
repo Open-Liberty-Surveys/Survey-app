@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import * as CanvasJS from './canvasjs.min';
 
 @Component({
@@ -12,16 +12,20 @@ export class BarGraphComponent {
   id = '';
   survey;
   setData(survey) {
+
     survey.options.forEach( option => {
-      this.answerData.push({y: 0, label: option});
+      this.answerData.push({y: 0, label: option, users: []});
     });
+
     survey.answers.forEach(answer => {
       this.answerData.forEach(data => {
         if (data.label === answer.option) {
           data.y++;
+          data.users.push(answer.user);
         }
       });
     });
+
     this.answerData.forEach( data => {
       data.y = (data.y / survey.answers.length) * 100;
     });
@@ -63,10 +67,9 @@ export class BarGraphComponent {
   }
 
   viewAnswer(e) {
-    console.log("sucess!");
+    var users = e.dataPoint.users;
+    console.log(users);
   }
 
-  constructor() {
-    
-  }
+  constructor() {}
 }

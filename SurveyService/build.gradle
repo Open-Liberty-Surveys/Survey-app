@@ -33,17 +33,29 @@ dependencies {
     //implementation files('C:\\Users\\erics\\Desktop\\CS\\External Jars\\junit-4.13-rc-1.jar')
 
     providedCompile group:'javax.servlet', name:'javax.servlet-api', version:'4.0.1'
-
+    compile group: 'javax.json', name: 'javax.json-api', version: '1.1.4'
     libertyRuntime group:'io.openliberty', name:'openliberty-runtime', version:'[17.0.0.4,)'
-
     compile 'javax.ws.rs:javax.ws.rs-api:2.1.1'
+    compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
 }
 
 ext{
     appName = project.name
     httpPort = 8090
     httpsPort = 9453
-    warContext = appName
+    warContext = '/'
+}
+
+task cpySrc(type: Copy) {
+    from "$projectDir/src/main/java/survey"
+    into "$projectDir/src/main/webapp"
+    include '**/surveys.json'
+}
+
+task deleteOld(type: Delete) {
+    doFirst {
+        delete "$projectDir/src/main/webapp"
+    }
 }
 
 liberty{
@@ -54,7 +66,7 @@ liberty{
         bootstrapProperties = ['default.http.port':httpPort,
                                'default.https.port':httpsPort,
                                'app.context.root': warContext]
-
+	
         packageLiberty{
             archive = '$buildDir/${appName}.zip'
             include = "usr"
@@ -62,9 +74,11 @@ liberty{
     }
 }
 
-war{
+war {
     archiveName = "${baseName}.${extension}"
 }
-
+war.dependsOn 'cpySrc'
+//build.finalizedBy 'cpySrc'
 clean.dependsOn 'libertyStop'
+clean.dependsOn 'deleteOld'
 libertyPackage.dependsOn 'libertyStop'

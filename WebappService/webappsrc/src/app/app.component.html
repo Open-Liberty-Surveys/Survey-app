@@ -6,15 +6,28 @@
 
 <router-outlet></router-outlet>
 
-<div *ngIf="!user.loggedIn && user.authenticated">
-  <nav>
-    <button (click)="login(true)" routerLink="SurveyList" routerLinkActive="active">Login</button>
-  </nav>
-</div>
+<div *ngIf="!user.loggedIn && !user.signingIn">
+  <div class = "share-bubble" style="margin-left: 35%; margin-top: 0px; float:left;">
+    <div style="display: inline-flex; width: 100%;">
+      <div *ngIf="user.authenticated">
+        <nav>
+          <button (click)="login(true)" routerLink="SurveyList" routerLinkActive="active">Login</button>
+        </nav>
+      </div>
 
-<div *ngIf="!user.loggedIn && !user.authenticated">
-  <nav>
-    <button (click)="display()">Login</button>
-  </nav>
+      <div *ngIf="!user.authenticated">
+        <nav>
+          <button (click)="display()">Login</button>
+        </nav>
+      </div>
+
+      <div style="width: 100%"></div>
+
+      <nav>
+        <button (click)="signingUp(true)" routerLink="SignUp" routerLinkActive="active" style="margin-right: 90px;">SignUp</button>
+      </nav>
+    </div>
+    <br><br>
+    <label class= "error">{{message}}</label>
+  </div>
 </div>
-{{message}}

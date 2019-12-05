@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive>
+    <dir sourceOnDisk="C:\Users\erics\Desktop\Survey\Survey-app\SurveyService\src\main\webapp" targetInArchive="/"/>
+    <dir sourceOnDisk="C:\Users\erics\Desktop\Survey\Survey-app\SurveyService\build\classes\java\main" targetInArchive="/WEB-INF/classes/"/>
+    <file sourceOnDisk="C:\Users\erics\.gradle\caches\modules-2\files-2.1\javax.json\javax.json-api\1.1.4\c8efa3cfaeee2b05c2dfd54cba21548a081b1746\javax.json-api-1.1.4.jar" targetInArchive="/WEB-INF/lib/javax.json-api-1.1.4.jar"/>
+    <file sourceOnDisk="C:\Users\erics\.gradle\caches\modules-2\files-2.1\javax.ws.rs\javax.ws.rs-api\2.1.1\d3466bc9321fe84f268a1adb3b90373fc14b0eb5\javax.ws.rs-api-2.1.1.jar" targetInArchive="/WEB-INF/lib/javax.ws.rs-api-2.1.1.jar"/>
+    <file sourceOnDisk="C:\Users\erics\.gradle\caches\modules-2\files-2.1\org.glassfish\javax.json\1.0.4\3178f73569fd7a1e5ffc464e680f7a8cc784b85a\javax.json-1.0.4.jar" targetInArchive="/WEB-INF/lib/javax.json-1.0.4.jar"/>
+    <file sourceOnDisk="C:\Users\erics\Desktop\Survey\Survey-app\SurveyService\build\tmp\META-INF\MANIFEST.MF" targetInArchive="/META-INF/MANIFEST.MF"/>
+</archive>

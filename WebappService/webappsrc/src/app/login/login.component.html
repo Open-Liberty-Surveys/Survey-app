@@ -1,5 +1,7 @@
-{{login(false)}}
-<label>Username: </label>
-<input #box1 (keyup)="onKey1(box1.value)">
-<label>Password: </label>
-<input #box2 type="password" (keyup)="onKey2(box2.value)">
+<div class = "share-bubble" style="margin-left: 35%; margin-top: 60px; float:left">
+  {{login(false)}}
+  <label>Username: </label>
+  <input #box1 (keyup)="onKey1(box1.value)" style="width: 100%">
+  <label>Password: </label>
+  <input #box2 type="password" (keyup)="onKey2(box2.value)" style="width: 100%">
+</div>

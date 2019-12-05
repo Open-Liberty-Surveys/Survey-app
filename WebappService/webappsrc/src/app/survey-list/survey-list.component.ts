@@ -1,58 +1,55 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-import { surveys } from '../surveys';
+import { Component, OnInit} from '@angular/core';
 import { user } from '../user';
 import { BarGraphComponent } from '../bar-graph/bar-graph.component';
-import {Location} from "@angular/common";
+import {SurveysService} from "../surveys";
 
 @Component({
   selector: 'app-survey-list',
   templateUrl: './survey-list.component.html',
+  providers: [ SurveysService ],
   styleUrls: ['./survey-list.component.css'],
 })
 
 export class SurveyListComponent implements OnInit {
-  surveys = surveys;
+  surveys = [];
   bgc = [];
+  selected = 'User';
 
-  constructor(private location: Location){}
+  constructor(private surveysService: SurveysService) {}
 
-  ngOnInit(): void {
-    document.body.setAttribute('bgcolor','#F9F9E3');
-    //this.location.subscribe((value: PopStateEvent)  => {
-    //  this.bgc.forEach( graph => {
-    //    graph.createGraph();
-    //  });
-    //});
-    setTimeout(this.drawGraphs, 1);
-  }
-
-  drawGraphs() {
-    this.surveys = surveys;
-    this.surveys.forEach( survey => {
-      let ans = false;
-      survey.answers.forEach(answer => {
-        // console.log(survey.question + ' ' + answer.user + ' ' + answer.option + ' ' + user.name);
-        if (answer.user === user.name) {
-          // console.log('true');
-          ans = true;
+  ngAfterViewInit(){
+    this.surveysService.fetchSurveys().then(data => {
+      var tmpSurveys = [];
+      data.forEach(survey => {
+        if(survey.user!==user.name){
+          tmpSurveys.push(survey);
         }
       });
-      if(ans){
-        this.bgc = [];
-        this.bgc.push(new BarGraphComponent());
-        this.bgc[this.bgc.length-1].setData(survey);
-        this.bgc[this.bgc.length-1].createGraph();
+      this.drawGraphs(tmpSurveys);
+    } );
+  }
+
+  ngOnInit(): void {
+    this.surveysService.fetchSurveys().then(data => {
+      var tmpSurveys = [];
+      data.forEach(survey => {
+        if(survey.user!==user.name){
+          tmpSurveys.push(survey);
+        }
+      });
+      this.surveys = tmpSurveys;
+    });
+    document.body.setAttribute('bgcolor','#F9F9E3');
+  }
+
+  drawGraphs(surveys) {
+    surveys.forEach(survey => {
+      if (this.hasAnswered(survey)) {
+        this.createGraph(survey);
       }
     });
   }
 
-  drawGraph(survey): boolean {
-    if(this.hasAnswered(survey)){
-      this.createGraph(survey);
-      return true;
-    }
-    return false;
-  }
   answered(option, survey) {
     survey.answers.push({
       user: user.name,
@@ -62,9 +59,6 @@ export class SurveyListComponent implements OnInit {
   }
 
   createGraph(survey) {
-    //const str = "chartContainer";
-    //document.getElementsByClassName("share-bubble").innerHTML =
-    //  '<div id="{{survey.id}}" style="height: 200px; width: 90%;"></div>';
     this.bgc.push(new BarGraphComponent());
     this.bgc[this.bgc.length-1].setData(survey);
     this.bgc[this.bgc.length-1].createGraph();
@@ -80,5 +74,36 @@ export class SurveyListComponent implements OnInit {
       }
     });
     return ans;
+  }
+
+  changeSelected(selected){
+    this.selected = selected;
+  }
+
+  search(searchIn, searchFor){
+      if(searchIn==='User'){
+        console.log('searching user: ' +searchFor);
+        this.surveysService.fetchSurveys().then(data => {
+          var tmpSurveys = [];
+          data.forEach(survey => {
+            if(survey.user===searchFor){
+              tmpSurveys.push(survey);
+            }
+          });
+          this.surveys = tmpSurveys;
+        });
+      }
+      else{
+        this.surveysService.fetchSurveys().then(data => {
+          var tmpSurveys = [];
+          data.forEach(survey => {
+            if(survey.question.toLowerCase().match(searchFor.toLowerCase())){
+              tmpSurveys.push(survey);
+            }
+          });
+          this.surveys = tmpSurveys;
+        });
+      }
+
   }
 }

@@ -1,3 +1,30 @@
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
         /***/ "./$$_lazy_route_resource lazy recursive": 
         /*!******************************************************!*\
@@ -28,7 +55,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"user.loggedIn\">\n  <nav>\n    <app-top-bar></app-top-bar>\n  </nav>\n</div>\n\n<router-outlet></router-outlet>\n\n<div *ngIf=\"!user.loggedIn && user.authenticated\">\n  <nav>\n    <button (click)=\"login(true)\" routerLink=\"SurveyList\" routerLinkActive=\"active\">Login</button>\n  </nav>\n</div>\n\n<div *ngIf=\"!user.loggedIn && !user.authenticated\">\n  <nav>\n    <button (click)=\"display()\">Login</button>\n  </nav>\n</div>\n{{message}}\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"user.loggedIn\">\r\n  <nav>\r\n    <app-top-bar style=\"border-bottom:1.5px solid; border-color:#DBDBDB;\"></app-top-bar>\r\n  </nav>\r\n</div>\r\n\r\n<router-outlet></router-outlet>\r\n\r\n<div *ngIf=\"!user.loggedIn && !user.signingIn\">\r\n  <div class = \"share-bubble\" style=\"margin-left: 35%; margin-top: 0px; float:left;\">\r\n    <div style=\"display: inline-flex; width: 100%;\">\r\n      <div *ngIf=\"user.authenticated\">\r\n        <nav>\r\n          <button (click)=\"login(true)\" routerLink=\"SurveyList\" routerLinkActive=\"active\">Login</button>\r\n        </nav>\r\n      </div>\r\n\r\n      <div *ngIf=\"!user.authenticated\">\r\n        <nav>\r\n          <button (click)=\"display()\">Login</button>\r\n        </nav>\r\n      </div>\r\n\r\n      <div style=\"width: 100%\"></div>\r\n\r\n      <nav>\r\n        <button (click)=\"signingUp(true)\" routerLink=\"SignUp\" routerLinkActive=\"active\" style=\"margin-right: 90px;\">SignUp</button>\r\n      </nav>\r\n    </div>\r\n    <br><br>\r\n    <label class= \"error\">{{message}}</label>\r\n  </div>\r\n</div>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/bar-graph/bar-graph.component.html": 
@@ -50,7 +77,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<p>friends-list works!</p>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("\n<div *ngFor=\"let survey of surveys\" style=\"display: inline-flex; width: 48%; float: left\">\n\n  <div class = \"holder\" style=\"height: 340px; width: 100%;\">\n\n    <div class = \"surveyBar\">\n\n      <div style=\"display: inline-flex;\">\n        <div style=\"margin: 10px 15px 0px 0px;\">\n          <img src = \"assets/{{survey.user}}.png\" alt = \"assets/{{survey.user}}.png\" width=\"45\" height=\"45\" style=\"border-radius: 50%;\">\n        </div>\n        <h3>\n          User: {{ survey.user }}\n        </h3>\n      </div>\n\n      <h2>\n        Question: {{ survey.question }}\n      </h2>\n    </div>\n\n    <div class = \"share-bubble\" style=\"height: 200px; width: 100%; z-index:1;\">\n\n      <div *ngIf=\"!hasAnswered(survey)\" style=\"z-index:0;\">\n        <p *ngFor=\"let option of survey.options\" style=\"display: inline-flex; width: 40%; z-index:1;\">\n          <button (click)=\"answered(option, survey)\">\n            {{ option }}\n          </button>\n        </p>\n      </div>\n\n      <div id=\"{{survey.id}}\" style = \"height: 200px; width: 90%;z-index:1;\"></div>\n\n    </div>\n\n    <div style = \"height: 20px; width: 100%; margin: 300px 0px 0px 30px; z-index:99; color: #000000;\n    border-bottom:1.5px solid; border-color:#DBDBDB;\">\n\n    </div>\n  </div >\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/login/login.component.html": 
@@ -61,7 +88,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("{{login(false)}}\n<label>Username: </label>\n<input #box1 (keyup)=\"onKey1(box1.value)\">\n<label>Password: </label>\n<input #box2 type=\"password\" (keyup)=\"onKey2(box2.value)\">\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class = \"share-bubble\" style=\"margin-left: 35%; margin-top: 60px; float:left\">\n  {{login(false)}}\n  <label>Username: </label>\n  <input #box1 (keyup)=\"onKey1(box1.value)\" style=\"width: 100%\">\n  <label>Password: </label>\n  <input #box2 type=\"password\" (keyup)=\"onKey2(box2.value)\" style=\"width: 100%\">\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/make-survey/make-survey.component.html": 
@@ -72,7 +99,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<label>Enter Survey Question: </label>\n<input type = \"text\" #box1 (keyup)=\"onKey1(box1.value)\">\n\n<label>Enter Survey Answers: </label>\n<div *ngFor=\"let i of numAns\">\n\n  <input type = \"text\" #box2 (keyup)=\"onKey2(box2.value,i)\"><br>\n\n</div>\n\n<button (click)=\"addAnswer()\">+</button>\n<button (click)=\"subtractAnswer()\">-</button><br/><br><br/>\n\n<button (click)=\"resetAnswers()\">clear</button>\n<button (click)=\"MakeSurvey();resetAnswers()\">Make Survey</button>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class = \"share-bubble\" style=\"margin-left: 135px; margin-bottom: 0px; float:left\">\n\n  <label class = \"question\" >Enter Survey Question: </label>\n\n  <textarea maxlength = \"150\" style = \"width: 90%; height: 60px; font-size: 15px; margin-bottom: 15px\"\n            #box1 (keyup)=\"onKey1(box1.value)\"></textarea>\n\n  <label>Enter Survey Answers: </label>\n  <div *ngFor=\"let i of numAns\" style=\"display: inline-flex; width: 40%; z-index:1;\">\n\n  <input type = \"text\" maxlength=\"25\" style=\"margin-bottom: 15px\" #box2 (keyup)=\"onKey2(box2.value,i)\">\n\n  </div>\n\n  <div *ngIf=\"num%2==1\">\n    <br>\n  </div>\n\n  <button class = \"b2l\" (click)=\"addAnswer()\">+</button>\n  <button class = \"b2r\" (click)=\"subtractAnswer()\">-</button><br/><br><br/>\n</div>\n\n<div class = \"share-bubble1\" style=\"margin-left: 135px; margin-bottom: 0px; float:left\">\n  <button style=\"margin-left: 100px;\" (click)=\"resetAnswers();box1.value=''\">clear</button>\n  <button (click)=\"MakeSurvey();resetAnswers();box1.value=''\" style=\"float:right; margin-right: 100px;\">Make Survey</button>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/profile/profile.component.html": 
@@ -83,7 +110,18 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<p>profile works!</p>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class = \"holder\" style=\"height: 100%; width: 90%; margin-left: 2.5%; margin-top: 15px; float:left\">\n\n  <div class = \"profileBar\">\n\n    <div style=\"display: inline-flex;\">\n      <div style=\"margin: 25px 35px 0px 15px;\">\n        <img src = \"assets/{{user.name}}.png\" alt = \"assets/{{user.name}}.png\" width=\"100\" height=\"100\" style=\"border-radius: 50%;\">\n      </div>\n      <h3 style=\"font-size: 35px; margin: 50px 0px 0px 0px;\">\n        User: {{ user.name }}\n      </h3>\n    </div>\n  </div>\n\n  <div class = \"share-bubble\" style=\"height: 150%; width: 100%; z-index:1;\">\n\n\n    <div *ngFor=\"let survey of surveys\" style=\"display: inline-flex; width: 48%; float: left;\">\n\n      <div class = \"holderOld\" style=\"height: 340px; width: 100%;\">\n\n        <div class = \"surveyBar\">\n          <h2>\n            Question: {{ survey.question }}\n          </h2>\n        </div>\n\n        <div class = \"share-bubble\" style=\"height: 200px; width: 100%; z-index:1;\">\n\n          <div *ngIf=\"!hasAnswered(survey)\" style=\"z-index:0;\">\n            <p *ngFor=\"let option of survey.options\" style=\"display: inline-flex; width: 40%; z-index:1;\">\n              <button (click)=\"answered(option, survey)\">\n                {{ option }}\n              </button>\n            </p>\n          </div>\n\n          <div id=\"{{survey.id}}\" style = \"height: 200px; width: 90%;z-index:1;\"></div>\n\n        </div>\n      </div >\n    </div>\n\n  </div>\n\n</div >\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/sign-up/sign-up.component.html": 
+        /*!**************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/sign-up/sign-up.component.html ***!
+          \**************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class = \"share-bubble\" style=\"margin-left: 35%; margin-top: 60px; float:left\">\n  {{login(false)}}\n  <label>Enter Username: </label>\n  <input #box1 (keyup)=\"onKey1(box1.value)\" style=\"width: 100%\">\n  <label>Enter Password: </label>\n  <input #box2 type=\"password\" (keyup)=\"onKey2(box2.value)\" style=\"width: 100%\">\n  <label>Re-Enter Password: </label>\n  <input #box3 type=\"password\" (keyup)=\"onKey3(box3.value)\" style=\"width: 100%; margin-bottom: 60px\">\n\n  <div>\n      <div style=\"display: inline-flex; width: 100%;\">\n\n        <nav>\n          <button (click)=\"signingUp(false)\" routerLink=\"..\" routerLinkActive=\"active\" style=\"margin-right: 73px\">Cancel</button>\n        </nav>\n\n        <div style=\"width: 100%\"></div>\n\n        <div *ngIf=\"valid()\">\n          <nav>\n            <button (click)=\"signingUp(false)\" routerLink=\"..\" routerLinkActive=\"active\" style=\"margin-right: 90px\">Submit</button>\n          </nav>\n        </div>\n\n        <div *ngIf=\"!valid()\">\n          <nav>\n            <button (click)=\"display()\" style=\"margin-right: 90px\">Submit</button>\n          </nav>\n        </div>\n      </div>\n\n      <br><br>\n      <label class= \"error\">{{message}}</label>\n  </div>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/survey-list/survey-list.component.html": 
@@ -94,7 +132,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngFor=\"let survey of surveys\">\n\n  <h3>\n    User: {{ survey.user }}\n  </h3>\n\n  <h2 *ngIf=\"survey.question\">\n    Question: {{ survey.question }}\n  </h2>\n\n\n  <div id=\"chart\"></div>\n\n  <div *ngIf=\"!hasAnswered(survey)\">\n    <p *ngFor=\"let option of survey.options\">\n      <button (click)=\"answered(option, survey)\">\n        {{ option }}\n      </button>\n    </p>\n  </div>\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div style = \"margin: 0px 0px 0px 35px;\">\r\n  <div style=\"display: inline-flex; width: 100%\">\r\n\r\n    <mat-form-field style=\"width: 100%\">\r\n      <input maxlength = \"200\" matInput placeholder=\"Search {{selected}}\" #entered>\r\n    </mat-form-field>\r\n\r\n    <mat-form-field style=\"float: right;\">\r\n      <mat-select #select [(value)]=selected placeholder=\"Select\">\r\n        <mat-option #option1 (onSelectionChange)=\"changeSelected(option1.value)\" value=\"User\">User</mat-option>\r\n        <mat-option #option2 (onSelectionChange)=\"changeSelected(option2.value)\" value=\"Key word\">Key Word</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n\r\n    <button (click)=\"search(select.value, entered.value)\" class=\"b1\" style=\"margin-right: 25px\">\r\n      <mat-icon>search</mat-icon>\r\n    </button>\r\n  </div>\r\n</div>\r\n\r\n<div *ngFor=\"let survey of surveys\" style=\"display: inline-flex; width: 48%; float: left\">\r\n\r\n  <div class = \"holder\" style=\"height: 340px; width: 100%;\">\r\n\r\n    <div class = \"surveyBar\">\r\n\r\n      <div style=\"display: inline-flex;\">\r\n        <div style=\"margin: 10px 15px 0px 0px;\">\r\n          <img src = \"assets/{{survey.user}}.png\" alt = \"assets/{{survey.user}}.png\" width=\"45\" height=\"45\" style=\"border-radius: 50%;\">\r\n        </div>\r\n        <h3>\r\n          User: {{ survey.user }}\r\n        </h3>\r\n      </div>\r\n\r\n      <h2>\r\n        Question: {{ survey.question }}\r\n      </h2>\r\n    </div>\r\n\r\n    <div class = \"share-bubble\" style=\"height: 200px; width: 100%; z-index:1;\">\r\n\r\n      <div *ngIf=\"!hasAnswered(survey)\" style=\"z-index:0;\">\r\n        <p *ngFor=\"let option of survey.options\" style=\"display: inline-flex; width: 40%; z-index:1;\">\r\n          <button (click)=\"answered(option, survey)\">\r\n            {{ option }}\r\n          </button>\r\n        </p>\r\n      </div>\r\n\r\n      <div id=\"{{survey.id}}\" style = \"height: 200px; width: 90%;z-index:1;\"></div>\r\n\r\n    </div>\r\n\r\n    <!--<div style = \"height: 20px; width: 100%; margin: 300px 0px 0px 30px; z-index:99; color: #000000;\r\n    border-bottom:1.5px solid; border-color:#DBDBDB;\"></div>-->\r\n\r\n  </div >\r\n</div>\r\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/top-bar/top-bar.component.html": 
@@ -105,7 +143,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n<a routerLink=\"SurveyList\" routerLinkActive=\"active\">>\n  <h1>Surveys</h1>\n</a>\n<a routerLink=\"MakeSurvey\" routerLinkActive=\"active\">>\n  <h1>Make Survey</h1>\n</a>\n<a routerLink=\"Friends\" routerLinkActive=\"active\">>\n  <h1>Friends</h1>\n</a>\n<a routerLink=\"Profile\" routerLinkActive=\"active\">>\n  <h1>Profile</h1>\n</a>\n\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<a routerLink=\"FriendsList\" routerLinkActive=\"active\">\n  <mat-icon>home</mat-icon>\n</a>\n<a routerLink=\"MakeSurvey\" routerLinkActive=\"active\">\n  <mat-icon>create</mat-icon>\n</a>\n<a routerLink=\"SurveyList\" routerLinkActive=\"active\">\n  <mat-icon>search</mat-icon>\n</a>\n<a routerLink=\"Profile\" routerLinkActive=\"active\">\n  <mat-icon>group</mat-icon>\n</a>\n\n");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -416,7 +454,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
+            /* harmony default export */ __webpack_exports__["default"] = ("div.share-bubble {\r\n  background-color: #fff;\r\n  box-shadow: 0px 7px 6px 0px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 100px 10px 100px 90px;\r\n  border-bottom-left-radius: 10px;\r\n  border-bottom-right-radius: 10px;\r\n  position: relative;\r\n  width: 30%;\r\n  height: 100px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxzQkFBc0I7RUFDdEIsbUNBQW1DO0VBQ25DLHFCQUFxQjtFQUNyQiw4QkFBOEI7RUFDOUIsK0JBQStCO0VBQy9CLGdDQUFnQztFQUNoQyxrQkFBa0I7RUFDbEIsVUFBVTtFQUNWLGFBQWE7QUFDZiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZGl2LnNoYXJlLWJ1YmJsZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcclxuICBib3gtc2hhZG93OiAwcHggN3B4IDZweCAwcHggI0IyQjJCMjtcclxuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgcGFkZGluZzogMTAwcHggMTBweCAxMDBweCA5MHB4O1xyXG4gIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDEwcHg7XHJcbiAgYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXM6IDEwcHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHdpZHRoOiAzMCU7XHJcbiAgaGVpZ2h0OiAxMDBweDtcclxufVxyXG4iXX0= */");
             /***/ 
         }),
         /***/ "./src/app/app.component.ts": 
@@ -444,6 +482,9 @@
                 AppComponent.prototype.display = function () {
                     this.message = 'Incorrect username/password';
                 };
+                AppComponent.prototype.signingUp = function (bool) {
+                    _user__WEBPACK_IMPORTED_MODULE_2__["user"].signingIn = bool;
+                };
                 return AppComponent;
             }());
             AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -469,22 +510,28 @@
             /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
-            /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-            /* harmony import */ var _survey_list_survey_list_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./survey-list/survey-list.component */ "./src/app/survey-list/survey-list.component.ts");
-            /* harmony import */ var _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./top-bar/top-bar.component */ "./src/app/top-bar/top-bar.component.ts");
-            /* harmony import */ var _make_survey_make_survey_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./make-survey/make-survey.component */ "./src/app/make-survey/make-survey.component.ts");
-            /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-            /* harmony import */ var _friends_list_friends_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./friends-list/friends-list.component */ "./src/app/friends-list/friends-list.component.ts");
-            /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
-            /* harmony import */ var _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./bar-graph/bar-graph.component */ "./src/app/bar-graph/bar-graph.component.ts");
+            /* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm2015/form-field.js");
+            /* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm2015/input.js");
+            /* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm2015/select.js");
+            /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+            /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+            /* harmony import */ var _survey_list_survey_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./survey-list/survey-list.component */ "./src/app/survey-list/survey-list.component.ts");
+            /* harmony import */ var _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./top-bar/top-bar.component */ "./src/app/top-bar/top-bar.component.ts");
+            /* harmony import */ var _make_survey_make_survey_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./make-survey/make-survey.component */ "./src/app/make-survey/make-survey.component.ts");
+            /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+            /* harmony import */ var _friends_list_friends_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./friends-list/friends-list.component */ "./src/app/friends-list/friends-list.component.ts");
+            /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./profile/profile.component */ "./src/app/profile/profile.component.ts");
+            /* harmony import */ var _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./bar-graph/bar-graph.component */ "./src/app/bar-graph/bar-graph.component.ts");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            /* harmony import */ var _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./sign-up/sign-up.component */ "./src/app/sign-up/sign-up.component.ts");
             var appRoutes = [
                 { path: '', redirectTo: '/Login', pathMatch: 'full' },
-                { path: 'Login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"] },
-                { path: 'SurveyList', component: _survey_list_survey_list_component__WEBPACK_IMPORTED_MODULE_6__["SurveyListComponent"] },
-                { path: 'MakeSurvey', component: _make_survey_make_survey_component__WEBPACK_IMPORTED_MODULE_8__["MakeSurveyComponent"] },
-                // { path: 'Friends', component: FriendsListComponent},
-                { path: 'Friends', component: _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_12__["BarGraphComponent"] },
-                { path: 'Profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_11__["ProfileComponent"] },
+                { path: 'Login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_13__["LoginComponent"] },
+                { path: 'SurveyList', component: _survey_list_survey_list_component__WEBPACK_IMPORTED_MODULE_10__["SurveyListComponent"] },
+                { path: 'MakeSurvey', component: _make_survey_make_survey_component__WEBPACK_IMPORTED_MODULE_12__["MakeSurveyComponent"] },
+                { path: 'FriendsList', component: _friends_list_friends_list_component__WEBPACK_IMPORTED_MODULE_14__["FriendsListComponent"] },
+                { path: 'Profile', component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__["ProfileComponent"] },
+                { path: 'SignUp', component: _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_18__["SignUpComponent"] },
             ];
             var AppModule = /** @class */ (function () {
                 function AppModule() {
@@ -494,24 +541,30 @@
             AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
                     declarations: [
-                        _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                        _survey_list_survey_list_component__WEBPACK_IMPORTED_MODULE_6__["SurveyListComponent"],
-                        _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_7__["TopBarComponent"],
-                        _make_survey_make_survey_component__WEBPACK_IMPORTED_MODULE_8__["MakeSurveyComponent"],
-                        _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"],
-                        _friends_list_friends_list_component__WEBPACK_IMPORTED_MODULE_10__["FriendsListComponent"],
-                        _profile_profile_component__WEBPACK_IMPORTED_MODULE_11__["ProfileComponent"],
-                        _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_12__["BarGraphComponent"]
+                        _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+                        _survey_list_survey_list_component__WEBPACK_IMPORTED_MODULE_10__["SurveyListComponent"],
+                        _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_11__["TopBarComponent"],
+                        _make_survey_make_survey_component__WEBPACK_IMPORTED_MODULE_12__["MakeSurveyComponent"],
+                        _login_login_component__WEBPACK_IMPORTED_MODULE_13__["LoginComponent"],
+                        _friends_list_friends_list_component__WEBPACK_IMPORTED_MODULE_14__["FriendsListComponent"],
+                        _profile_profile_component__WEBPACK_IMPORTED_MODULE_15__["ProfileComponent"],
+                        _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_16__["BarGraphComponent"],
+                        _sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_18__["SignUpComponent"],
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                         _angular_material_icon__WEBPACK_IMPORTED_MODULE_4__["MatIconModule"],
+                        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_5__["MatFormFieldModule"],
+                        _angular_material_input__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"],
+                        _angular_material_select__WEBPACK_IMPORTED_MODULE_7__["MatSelectModule"],
+                        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
+                        _angular_common_http__WEBPACK_IMPORTED_MODULE_17__["HttpClientModule"],
                         _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(appRoutes, {
                             enableTracing: false,
                         }),
                     ],
                     providers: [],
-                    bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+                    bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
                 })
             ], AppModule);
             /***/ 
@@ -529,32 +582,66 @@
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _canvasjs_min__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./canvasjs.min */ "./src/app/bar-graph/canvasjs.min.js");
             /* harmony import */ var _canvasjs_min__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/ __webpack_require__.n(_canvasjs_min__WEBPACK_IMPORTED_MODULE_2__);
-            // var CanvasJS = require('./canvasjs.min');
             var BarGraphComponent = /** @class */ (function () {
                 function BarGraphComponent() {
-                    this.chart = new _canvasjs_min__WEBPACK_IMPORTED_MODULE_2__["Chart"]('chartContainer', {
+                    this.answerData = [];
+                    this.id = '';
+                }
+                BarGraphComponent.prototype.setData = function (survey) {
+                    var _this = this;
+                    survey.options.forEach(function (option) {
+                        _this.answerData.push({ y: 0, label: option, users: [] });
+                    });
+                    survey.answers.forEach(function (answer) {
+                        _this.answerData.forEach(function (data) {
+                            if (data.label === answer.option) {
+                                data.y++;
+                                data.users.push(answer.user);
+                            }
+                        });
+                    });
+                    this.answerData.forEach(function (data) {
+                        data.y = (data.y / survey.answers.length) * 100;
+                    });
+                    this.id = survey.id;
+                };
+                BarGraphComponent.prototype.createGraph = function () {
+                    this.chart = new _canvasjs_min__WEBPACK_IMPORTED_MODULE_2__["Chart"](this.id, {
                         animationEnabled: true,
+                        updateChart: true,
+                        theme: "light1",
                         exportEnabled: true,
-                        title: {
-                            text: 'Basic Column Chart in Angular'
+                        axisY: {
+                            interval: 100,
+                            maximum: 100,
+                            lineColor: '#ffffff',
+                            suffix: '%'
+                            // gridColor: "rgba(1,77,101,.2)",
+                        },
+                        axisX: {
+                        //lineColor: '#ffffff',
+                        //suffix: '%'
+                        // gridColor: "rgba(1,77,101,.2)",
+                        },
+                        toolTip: {
+                            content: "<span style = \"color:rgba(2,77,50,10)\">{label}: " +
+                                "<span style = \"color:dataSeries.color\">{y}%<br>(_ answers)"
                         },
                         data: [{
-                                type: 'column',
-                                dataPoints: [
-                                    { y: 71, label: 'Apple' },
-                                    { y: 55, label: 'Mango' },
-                                    { y: 50, label: 'Orange' },
-                                    { y: 65, label: 'Banana' },
-                                    { y: 95, label: 'Pineapple' },
-                                    { y: 68, label: 'Pears' },
-                                    { y: 28, label: 'Grapes' },
-                                    { y: 34, label: 'Lychee' },
-                                    { y: 14, label: 'Jackfruit' }
-                                ]
+                                click: this.viewAnswer,
+                                type: 'bar',
+                                cursor: "pointer",
+                                itemclick: this.viewAnswer,
+                                // toolTipContent: "<span style = \"color:Tomato\">{label}: {y}%<br>(_ answers)",
+                                dataPoints: this.answerData
                             }]
                     });
                     this.chart.render();
-                }
+                };
+                BarGraphComponent.prototype.viewAnswer = function (e) {
+                    var users = e.dataPoint.users;
+                    console.log(users);
+                };
                 return BarGraphComponent;
             }());
             BarGraphComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -7942,7 +8029,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ZyaWVuZHMtbGlzdC9mcmllbmRzLWxpc3QuY29tcG9uZW50LmNzcyJ9 */");
+            /* harmony default export */ __webpack_exports__["default"] = (".example-fill-remaining-space {\r\n  /* This fills the remaining space, by using flexbox.\r\n  Every toolbar row uses a flexbox row layout. */\r\n  flex: 1 1 auto;\r\n}\r\ndiv.inline { float:left; }\r\n.clearFix {overflow:auto;}\r\n.clearBoth { clear:both; }\r\n.share-bubble {\r\n  background-color: #fff;\r\n  box-shadow: 0 0 6px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 0px 15px;\r\n  position: relative;\r\n  vertical-align: top;\r\n  float: left;\r\n  margin: 0px 5px 5px 30px;\r\n}\r\n.surveyBar{\r\n  box-shadow: 0 0 6px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 0 10px;\r\n  position: relative;\r\n  vertical-align: top;\r\n  float: left;\r\n  margin: 5px 5px 0px 30px;\r\n  width:100%;\r\n  height: 150px;\r\n  background:#F2EFF7;\r\n}\r\n.holder{\r\n  margin: 5px 5px 20px 5px;\r\n}\r\nbutton.b1{\r\n  margin: 15px 10px 0px 0px;\r\n  height: 40px;\r\n  background-color: transparent;\r\n  outline: none;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZnJpZW5kcy1saXN0L2ZyaWVuZHMtbGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7Z0RBQzhDO0VBQzlDLGNBQWM7QUFDaEI7QUFDQSxhQUFhLFVBQVUsRUFBRTtBQUN6QixXQUFXLGFBQWEsQ0FBQztBQUN6QixhQUFhLFVBQVUsRUFBRTtBQUN6QjtFQUNFLHNCQUFzQjtFQUN0QiwyQkFBMkI7RUFDM0IscUJBQXFCO0VBQ3JCLGlCQUFpQjtFQUNqQixrQkFBa0I7RUFDbEIsbUJBQW1CO0VBQ25CLFdBQVc7RUFDWCx3QkFBd0I7QUFDMUI7QUFDQTtFQUNFLDJCQUEyQjtFQUMzQixxQkFBcUI7RUFDckIsZUFBZTtFQUNmLGtCQUFrQjtFQUNsQixtQkFBbUI7RUFDbkIsV0FBVztFQUNYLHdCQUF3QjtFQUN4QixVQUFVO0VBQ1YsYUFBYTtFQUNiLGtCQUFrQjtBQUNwQjtBQUNBO0VBQ0Usd0JBQXdCO0FBQzFCO0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsWUFBWTtFQUNaLDZCQUE2QjtFQUM3QixhQUFhO0FBQ2YiLCJmaWxlIjoic3JjL2FwcC9mcmllbmRzLWxpc3QvZnJpZW5kcy1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhhbXBsZS1maWxsLXJlbWFpbmluZy1zcGFjZSB7XHJcbiAgLyogVGhpcyBmaWxscyB0aGUgcmVtYWluaW5nIHNwYWNlLCBieSB1c2luZyBmbGV4Ym94LlxyXG4gIEV2ZXJ5IHRvb2xiYXIgcm93IHVzZXMgYSBmbGV4Ym94IHJvdyBsYXlvdXQuICovXHJcbiAgZmxleDogMSAxIGF1dG87XHJcbn1cclxuZGl2LmlubGluZSB7IGZsb2F0OmxlZnQ7IH1cclxuLmNsZWFyRml4IHtvdmVyZmxvdzphdXRvO31cclxuLmNsZWFyQm90aCB7IGNsZWFyOmJvdGg7IH1cclxuLnNoYXJlLWJ1YmJsZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcclxuICBib3gtc2hhZG93OiAwIDAgNnB4ICNCMkIyQjI7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHBhZGRpbmc6IDBweCAxNXB4O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gIGZsb2F0OiBsZWZ0O1xyXG4gIG1hcmdpbjogMHB4IDVweCA1cHggMzBweDtcclxufVxyXG4uc3VydmV5QmFye1xyXG4gIGJveC1zaGFkb3c6IDAgMCA2cHggI0IyQjJCMjtcclxuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgcGFkZGluZzogMCAxMHB4O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gIGZsb2F0OiBsZWZ0O1xyXG4gIG1hcmdpbjogNXB4IDVweCAwcHggMzBweDtcclxuICB3aWR0aDoxMDAlO1xyXG4gIGhlaWdodDogMTUwcHg7XHJcbiAgYmFja2dyb3VuZDojRjJFRkY3O1xyXG59XHJcbi5ob2xkZXJ7XHJcbiAgbWFyZ2luOiA1cHggNXB4IDIwcHggNXB4O1xyXG59XHJcblxyXG5idXR0b24uYjF7XHJcbiAgbWFyZ2luOiAxNXB4IDEwcHggMHB4IDBweDtcclxuICBoZWlnaHQ6IDQwcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XHJcbiAgb3V0bGluZTogbm9uZTtcclxufVxyXG4iXX0= */");
             /***/ 
         }),
         /***/ "./src/app/friends-list/friends-list.component.ts": 
@@ -7956,17 +8043,85 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FriendsListComponent", function () { return FriendsListComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _surveys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../surveys */ "./src/app/surveys.ts");
+            /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
+            /* harmony import */ var _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../bar-graph/bar-graph.component */ "./src/app/bar-graph/bar-graph.component.ts");
             var FriendsListComponent = /** @class */ (function () {
-                function FriendsListComponent() {
+                function FriendsListComponent(surveysService) {
+                    this.surveysService = surveysService;
+                    this.surveys = [];
+                    this.bgc = [];
                 }
+                FriendsListComponent.prototype.ngAfterViewInit = function () {
+                    var _this = this;
+                    this.surveysService.fetchSurveys().then(function (data) {
+                        var tmpSurveys = [];
+                        data.forEach(function (survey) {
+                            _user__WEBPACK_IMPORTED_MODULE_3__["user"].friends.forEach(function (friend) {
+                                if (survey.user === friend) {
+                                    tmpSurveys.push(survey);
+                                }
+                            });
+                        });
+                        _this.drawGraphs(tmpSurveys);
+                    });
+                };
                 FriendsListComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.surveysService.fetchSurveys().then(function (data) {
+                        var tmpSurveys = [];
+                        data.forEach(function (survey) {
+                            _user__WEBPACK_IMPORTED_MODULE_3__["user"].friends.forEach(function (friend) {
+                                if (survey.user === friend) {
+                                    tmpSurveys.push(survey);
+                                }
+                            });
+                        });
+                        _this.surveys = tmpSurveys;
+                    });
+                    document.body.setAttribute('bgcolor', '#F9F9E3');
+                };
+                FriendsListComponent.prototype.drawGraphs = function (surveys) {
+                    var _this = this;
+                    surveys.forEach(function (survey) {
+                        if (_this.hasAnswered(survey)) {
+                            _this.createGraph(survey);
+                        }
+                    });
+                };
+                FriendsListComponent.prototype.answered = function (option, survey) {
+                    survey.answers.push({
+                        user: _user__WEBPACK_IMPORTED_MODULE_3__["user"].name,
+                        option: option
+                    });
+                    this.createGraph(survey);
+                };
+                FriendsListComponent.prototype.createGraph = function (survey) {
+                    this.bgc.push(new _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_4__["BarGraphComponent"]());
+                    this.bgc[this.bgc.length - 1].setData(survey);
+                    this.bgc[this.bgc.length - 1].createGraph();
+                };
+                FriendsListComponent.prototype.hasAnswered = function (survey) {
+                    var ans = false;
+                    survey.answers.forEach(function (answer) {
+                        // console.log(survey.question + ' ' + answer.user + ' ' + answer.option + ' ' + user.name);
+                        if (answer.user === _user__WEBPACK_IMPORTED_MODULE_3__["user"].name) {
+                            // console.log('true');
+                            ans = true;
+                        }
+                    });
+                    return ans;
                 };
                 return FriendsListComponent;
             }());
+            FriendsListComponent.ctorParameters = function () { return [
+                { type: _surveys__WEBPACK_IMPORTED_MODULE_2__["SurveysService"] }
+            ]; };
             FriendsListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-friends-list',
                     template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./friends-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/friends-list/friends-list.component.html")).default,
+                    providers: [_surveys__WEBPACK_IMPORTED_MODULE_2__["SurveysService"]],
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./friends-list.component.css */ "./src/app/friends-list/friends-list.component.css")).default]
                 })
             ], FriendsListComponent);
@@ -7980,7 +8135,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5jc3MifQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = ("div.share-bubble {\r\n  background-color: #fff;\r\n  box-shadow: 0px 7px 6px 0px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 100px 90px 100px 90px;\r\n  border-top-left-radius: 10px;\r\n  border-top-right-radius: 10px;\r\n  position: relative;\r\n  width: 30%;\r\n  height: 250px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHNCQUFzQjtFQUN0QixtQ0FBbUM7RUFDbkMscUJBQXFCO0VBQ3JCLDhCQUE4QjtFQUM5Qiw0QkFBNEI7RUFDNUIsNkJBQTZCO0VBQzdCLGtCQUFrQjtFQUNsQixVQUFVO0VBQ1YsYUFBYTtBQUNmIiwiZmlsZSI6InNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImRpdi5zaGFyZS1idWJibGUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XHJcbiAgYm94LXNoYWRvdzogMHB4IDdweCA2cHggMHB4ICNCMkIyQjI7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHBhZGRpbmc6IDEwMHB4IDkwcHggMTAwcHggOTBweDtcclxuICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAxMHB4O1xyXG4gIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAxMHB4O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB3aWR0aDogMzAlO1xyXG4gIGhlaWdodDogMjUwcHg7XHJcbn1cclxuIl19 */");
             /***/ 
         }),
         /***/ "./src/app/login/login.component.ts": 
@@ -8002,6 +8157,7 @@
                     this.username = '';
                 }
                 LoginComponent.prototype.ngOnInit = function () {
+                    document.body.setAttribute('bgcolor', '#F9F9E3');
                 };
                 LoginComponent.prototype.login = function (bool) {
                     _user__WEBPACK_IMPORTED_MODULE_2__["user"].loggedIn = bool;
@@ -8036,7 +8192,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21ha2Utc3VydmV5L21ha2Utc3VydmV5LmNvbXBvbmVudC5jc3MifQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = ("div.share-bubble {\r\n  background-color: #fff;\r\n  box-shadow: 0px 7px 6px 0px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 100px 100px 100px 100px;\r\n  position: relative;\r\n  width: 80%;\r\n  height: 500px;\r\n}\r\n.share-bubble1 {\r\n  background-color: #fff;\r\n  box-shadow: 0px 7px 6px 0px #B2B2B2;\r\n  display: inline-block;\r\n  position: relative;\r\n  width: 80%;\r\n  height: 60px;\r\n}\r\n.txt{\r\n  max-width: 500px;\r\n}\r\nlabel.question {\r\n  font-size: 16px;\r\n}\r\nspan\r\n{\r\n  border: solid 1px black;\r\n}\r\nbutton.b2r {\r\n  display: inline-flex;\r\n  align-items: center;\r\n  border-radius: 0px;\r\n  border-top-right-radius: 2px;\r\n  border-bottom-right-radius: 2px;\r\n  font-size: 14px;\r\n  cursor: pointer;\r\n  background-color: #676767;\r\n  color: white;\r\n}\r\nbutton.b2l {\r\n  display: inline-flex;\r\n  align-items: center;\r\n  border-radius: 0px;\r\n  border-top-left-radius: 2px;\r\n  border-bottom-left-radius: 2px;\r\n  font-size: 14px;\r\n  cursor: pointer;\r\n  background-color: #676767;\r\n  color: white;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFrZS1zdXJ2ZXkvbWFrZS1zdXJ2ZXkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHNCQUFzQjtFQUN0QixtQ0FBbUM7RUFDbkMscUJBQXFCO0VBQ3JCLGdDQUFnQztFQUNoQyxrQkFBa0I7RUFDbEIsVUFBVTtFQUNWLGFBQWE7QUFDZjtBQUNBO0VBQ0Usc0JBQXNCO0VBQ3RCLG1DQUFtQztFQUNuQyxxQkFBcUI7RUFDckIsa0JBQWtCO0VBQ2xCLFVBQVU7RUFDVixZQUFZO0FBQ2Q7QUFDQTtFQUNFLGdCQUFnQjtBQUNsQjtBQUVBO0VBQ0UsZUFBZTtBQUNqQjtBQUVBOztFQUVFLHVCQUF1QjtBQUN6QjtBQUVBO0VBQ0Usb0JBQW9CO0VBQ3BCLG1CQUFtQjtFQUNuQixrQkFBa0I7RUFDbEIsNEJBQTRCO0VBQzVCLCtCQUErQjtFQUMvQixlQUFlO0VBQ2YsZUFBZTtFQUNmLHlCQUF5QjtFQUN6QixZQUFZO0FBQ2Q7QUFFQTtFQUNFLG9CQUFvQjtFQUNwQixtQkFBbUI7RUFDbkIsa0JBQWtCO0VBQ2xCLDJCQUEyQjtFQUMzQiw4QkFBOEI7RUFDOUIsZUFBZTtFQUNmLGVBQWU7RUFDZix5QkFBeUI7RUFDekIsWUFBWTtBQUNkIiwiZmlsZSI6InNyYy9hcHAvbWFrZS1zdXJ2ZXkvbWFrZS1zdXJ2ZXkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImRpdi5zaGFyZS1idWJibGUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XHJcbiAgYm94LXNoYWRvdzogMHB4IDdweCA2cHggMHB4ICNCMkIyQjI7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHBhZGRpbmc6IDEwMHB4IDEwMHB4IDEwMHB4IDEwMHB4O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB3aWR0aDogODAlO1xyXG4gIGhlaWdodDogNTAwcHg7XHJcbn1cclxuLnNoYXJlLWJ1YmJsZTEge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XHJcbiAgYm94LXNoYWRvdzogMHB4IDdweCA2cHggMHB4ICNCMkIyQjI7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB3aWR0aDogODAlO1xyXG4gIGhlaWdodDogNjBweDtcclxufVxyXG4udHh0e1xyXG4gIG1heC13aWR0aDogNTAwcHg7XHJcbn1cclxuXHJcbmxhYmVsLnF1ZXN0aW9uIHtcclxuICBmb250LXNpemU6IDE2cHg7XHJcbn1cclxuXHJcbnNwYW5cclxue1xyXG4gIGJvcmRlcjogc29saWQgMXB4IGJsYWNrO1xyXG59XHJcblxyXG5idXR0b24uYjJyIHtcclxuICBkaXNwbGF5OiBpbmxpbmUtZmxleDtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGJvcmRlci1yYWRpdXM6IDBweDtcclxuICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMnB4O1xyXG4gIGJvcmRlci1ib3R0b20tcmlnaHQtcmFkaXVzOiAycHg7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIGN1cnNvcjogcG9pbnRlcjtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjc2NzY3O1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuYnV0dG9uLmIybCB7XHJcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBib3JkZXItcmFkaXVzOiAwcHg7XHJcbiAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMnB4O1xyXG4gIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDJweDtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM2NzY3Njc7XHJcbiAgY29sb3I6IHdoaXRlO1xyXG59XHJcbiJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/make-survey/make-survey.component.ts": 
@@ -8053,7 +8209,8 @@
             /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
             /* harmony import */ var _surveys__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../surveys */ "./src/app/surveys.ts");
             var MakeSurveyComponent = /** @class */ (function () {
-                function MakeSurveyComponent() {
+                function MakeSurveyComponent(surveysService) {
+                    this.surveysService = surveysService;
                     // surveys = surveys;
                     this.user = _user__WEBPACK_IMPORTED_MODULE_2__["user"];
                     this.question = '';
@@ -8063,6 +8220,8 @@
                     this.elements = {};
                     this.i = 0;
                 }
+                MakeSurveyComponent.prototype.ngOnInit = function () {
+                };
                 MakeSurveyComponent.prototype.onKey1 = function (value) {
                     this.question = value;
                 };
@@ -8070,8 +8229,10 @@
                     this.answers[index] = value;
                 };
                 MakeSurveyComponent.prototype.addAnswer = function () {
-                    this.num++;
-                    this.numAns[this.num] = this.num;
+                    if (this.num < 5) {
+                        this.num++;
+                        this.numAns[this.num] = this.num;
+                    }
                 };
                 MakeSurveyComponent.prototype.subtractAnswer = function () {
                     if (this.num > 1) {
@@ -8099,21 +8260,35 @@
                     }
                 };
                 MakeSurveyComponent.prototype.MakeSurvey = function () {
-                    _surveys__WEBPACK_IMPORTED_MODULE_3__["surveys"].push({
+                    var id1 = this.hashString(this.question + (new Date().getTime())) + '';
+                    console.log(id1);
+                    var newSurvey = {
                         user: _user__WEBPACK_IMPORTED_MODULE_2__["user"].name,
                         question: this.question,
                         options: this.answers,
-                        answers: []
-                    });
+                        answers: [],
+                        id: id1
+                    };
+                    this.surveysService.postSurvey(newSurvey);
                 };
-                MakeSurveyComponent.prototype.ngOnInit = function () {
+                MakeSurveyComponent.prototype.hashString = function (str) {
+                    var hash = 0;
+                    for (var i = 0; i < str.length; i++) {
+                        hash += Math.pow(str.charCodeAt(i) * 31, str.length - i);
+                        hash = hash & hash; // Convert to 32bit integer
+                    }
+                    return hash;
                 };
                 return MakeSurveyComponent;
             }());
+            MakeSurveyComponent.ctorParameters = function () { return [
+                { type: _surveys__WEBPACK_IMPORTED_MODULE_3__["SurveysService"] }
+            ]; };
             MakeSurveyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-make-survey',
                     template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./make-survey.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/make-survey/make-survey.component.html")).default,
+                    providers: [_surveys__WEBPACK_IMPORTED_MODULE_3__["SurveysService"]],
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./make-survey.component.css */ "./src/app/make-survey/make-survey.component.css")).default]
                 })
             ], MakeSurveyComponent);
@@ -8127,7 +8302,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuY3NzIn0= */");
+            /* harmony default export */ __webpack_exports__["default"] = (".example-fill-remaining-space {\r\n  /* This fills the remaining space, by using flexbox.\r\n  Every toolbar row uses a flexbox row layout. */\r\n  flex: 1 1 auto;\r\n}\r\ndiv.inline { float:left; }\r\n.clearFix {overflow:auto;}\r\n.clearBoth { clear:both; }\r\n.share-bubble {\r\n  background-color: #fff;\r\n  box-shadow: 0 0 6px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 0px 15px;\r\n  position: relative;\r\n  vertical-align: top;\r\n  float: left;\r\n  margin: 0px 5px 5px 30px;\r\n}\r\n.surveyBar{\r\n  box-shadow: 0 0 6px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 0 10px;\r\n  position: relative;\r\n  vertical-align: top;\r\n  float: left;\r\n  margin: 25px 15px 0px 30px;\r\n  width:100%;\r\n  height: 85px;\r\n  background:#F2EFF7;\r\n}\r\n.holder{\r\n  margin: 0px 0px 0px 0px;\r\n}\r\n.holderOld{\r\n  margin: 5px 5px -20px 5px;\r\n}\r\n.profileBar{\r\n  box-shadow: 0 0 6px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 0 10px;\r\n  position: relative;\r\n  vertical-align: top;\r\n  float: left;\r\n  margin: 5px 5px 0px 30px;\r\n  width:100%;\r\n  height: 150px;\r\n  background: #B2B2B2;\r\n}\r\nbutton.b1{\r\n  margin: 15px 10px 0px 0px;\r\n  height: 40px;\r\n  background-color: transparent;\r\n  outline: none;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZmlsZS9wcm9maWxlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtnREFDOEM7RUFDOUMsY0FBYztBQUNoQjtBQUNBLGFBQWEsVUFBVSxFQUFFO0FBQ3pCLFdBQVcsYUFBYSxDQUFDO0FBQ3pCLGFBQWEsVUFBVSxFQUFFO0FBQ3pCO0VBQ0Usc0JBQXNCO0VBQ3RCLDJCQUEyQjtFQUMzQixxQkFBcUI7RUFDckIsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixtQkFBbUI7RUFDbkIsV0FBVztFQUNYLHdCQUF3QjtBQUMxQjtBQUNBO0VBQ0UsMkJBQTJCO0VBQzNCLHFCQUFxQjtFQUNyQixlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQixXQUFXO0VBQ1gsMEJBQTBCO0VBQzFCLFVBQVU7RUFDVixZQUFZO0VBQ1osa0JBQWtCO0FBQ3BCO0FBQ0E7RUFDRSx1QkFBdUI7QUFDekI7QUFDQTtFQUNFLHlCQUF5QjtBQUMzQjtBQUNBO0VBQ0UsMkJBQTJCO0VBQzNCLHFCQUFxQjtFQUNyQixlQUFlO0VBQ2Ysa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQixXQUFXO0VBQ1gsd0JBQXdCO0VBQ3hCLFVBQVU7RUFDVixhQUFhO0VBQ2IsbUJBQW1CO0FBQ3JCO0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsWUFBWTtFQUNaLDZCQUE2QjtFQUM3QixhQUFhO0FBQ2YiLCJmaWxlIjoic3JjL2FwcC9wcm9maWxlL3Byb2ZpbGUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLWZpbGwtcmVtYWluaW5nLXNwYWNlIHtcclxuICAvKiBUaGlzIGZpbGxzIHRoZSByZW1haW5pbmcgc3BhY2UsIGJ5IHVzaW5nIGZsZXhib3guXHJcbiAgRXZlcnkgdG9vbGJhciByb3cgdXNlcyBhIGZsZXhib3ggcm93IGxheW91dC4gKi9cclxuICBmbGV4OiAxIDEgYXV0bztcclxufVxyXG5kaXYuaW5saW5lIHsgZmxvYXQ6bGVmdDsgfVxyXG4uY2xlYXJGaXgge292ZXJmbG93OmF1dG87fVxyXG4uY2xlYXJCb3RoIHsgY2xlYXI6Ym90aDsgfVxyXG4uc2hhcmUtYnViYmxlIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xyXG4gIGJveC1zaGFkb3c6IDAgMCA2cHggI0IyQjJCMjtcclxuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgcGFkZGluZzogMHB4IDE1cHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbWFyZ2luOiAwcHggNXB4IDVweCAzMHB4O1xyXG59XHJcbi5zdXJ2ZXlCYXJ7XHJcbiAgYm94LXNoYWRvdzogMCAwIDZweCAjQjJCMkIyO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBwYWRkaW5nOiAwIDEwcHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbWFyZ2luOiAyNXB4IDE1cHggMHB4IDMwcHg7XHJcbiAgd2lkdGg6MTAwJTtcclxuICBoZWlnaHQ6IDg1cHg7XHJcbiAgYmFja2dyb3VuZDojRjJFRkY3O1xyXG59XHJcbi5ob2xkZXJ7XHJcbiAgbWFyZ2luOiAwcHggMHB4IDBweCAwcHg7XHJcbn1cclxuLmhvbGRlck9sZHtcclxuICBtYXJnaW46IDVweCA1cHggLTIwcHggNXB4O1xyXG59XHJcbi5wcm9maWxlQmFye1xyXG4gIGJveC1zaGFkb3c6IDAgMCA2cHggI0IyQjJCMjtcclxuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgcGFkZGluZzogMCAxMHB4O1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gIGZsb2F0OiBsZWZ0O1xyXG4gIG1hcmdpbjogNXB4IDVweCAwcHggMzBweDtcclxuICB3aWR0aDoxMDAlO1xyXG4gIGhlaWdodDogMTUwcHg7XHJcbiAgYmFja2dyb3VuZDogI0IyQjJCMjtcclxufVxyXG5cclxuYnV0dG9uLmIxe1xyXG4gIG1hcmdpbjogMTVweCAxMHB4IDBweCAwcHg7XHJcbiAgaGVpZ2h0OiA0MHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gIG91dGxpbmU6IG5vbmU7XHJcbn1cclxuIl19 */");
             /***/ 
         }),
         /***/ "./src/app/profile/profile.component.ts": 
@@ -8141,20 +8316,159 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function () { return ProfileComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
+            /* harmony import */ var _surveys__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../surveys */ "./src/app/surveys.ts");
+            /* harmony import */ var _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../bar-graph/bar-graph.component */ "./src/app/bar-graph/bar-graph.component.ts");
             var ProfileComponent = /** @class */ (function () {
-                function ProfileComponent() {
+                function ProfileComponent(surveysService) {
+                    this.surveysService = surveysService;
+                    this.user = _user__WEBPACK_IMPORTED_MODULE_2__["user"];
+                    this.surveys = [];
+                    this.bgc = [];
                 }
+                ProfileComponent.prototype.ngAfterViewInit = function () {
+                    var _this = this;
+                    this.surveysService.fetchSurveys().then(function (data) {
+                        var tmpSurveys = [];
+                        data.forEach(function (survey) {
+                            if (survey.user === _user__WEBPACK_IMPORTED_MODULE_2__["user"].name) {
+                                tmpSurveys.push(survey);
+                            }
+                        });
+                        _this.drawGraphs(tmpSurveys);
+                    });
+                };
                 ProfileComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.surveysService.fetchSurveys().then(function (data) {
+                        var tmpSurveys = [];
+                        data.forEach(function (survey) {
+                            if (survey.user === _user__WEBPACK_IMPORTED_MODULE_2__["user"].name) {
+                                tmpSurveys.push(survey);
+                            }
+                        });
+                        _this.surveys = tmpSurveys;
+                    });
+                    document.body.setAttribute('bgcolor', '#F9F9E3');
+                };
+                ProfileComponent.prototype.drawGraphs = function (surveys) {
+                    var _this = this;
+                    surveys.forEach(function (survey) {
+                        if (_this.hasAnswered(survey)) {
+                            _this.createGraph(survey);
+                        }
+                    });
+                };
+                ProfileComponent.prototype.answered = function (option, survey) {
+                    survey.answers.push({
+                        user: _user__WEBPACK_IMPORTED_MODULE_2__["user"].name,
+                        option: option
+                    });
+                    this.createGraph(survey);
+                };
+                ProfileComponent.prototype.createGraph = function (survey) {
+                    this.bgc.push(new _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_4__["BarGraphComponent"]());
+                    this.bgc[this.bgc.length - 1].setData(survey);
+                    this.bgc[this.bgc.length - 1].createGraph();
+                };
+                ProfileComponent.prototype.hasAnswered = function (survey) {
+                    var ans = false;
+                    survey.answers.forEach(function (answer) {
+                        // console.log(survey.question + ' ' + answer.user + ' ' + answer.option + ' ' + user.name);
+                        if (answer.user === _user__WEBPACK_IMPORTED_MODULE_2__["user"].name) {
+                            // console.log('true');
+                            ans = true;
+                        }
+                    });
+                    return ans;
                 };
                 return ProfileComponent;
             }());
+            ProfileComponent.ctorParameters = function () { return [
+                { type: _surveys__WEBPACK_IMPORTED_MODULE_3__["SurveysService"] }
+            ]; };
             ProfileComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-profile',
                     template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./profile.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/profile/profile.component.html")).default,
+                    providers: [_surveys__WEBPACK_IMPORTED_MODULE_3__["SurveysService"]],
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./profile.component.css */ "./src/app/profile/profile.component.css")).default]
                 })
             ], ProfileComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/sign-up/sign-up.component.css": 
+        /*!***********************************************!*\
+          !*** ./src/app/sign-up/sign-up.component.css ***!
+          \***********************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("div.share-bubble {\r\n  background-color: #fff;\r\n  box-shadow: 0px 7px 6px 0px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 100px 90px 100px 90px;\r\n  border-radius: 10px;\r\n  position: relative;\r\n  width: 30%;\r\n  height: 450px;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2lnbi11cC9zaWduLXVwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxzQkFBc0I7RUFDdEIsbUNBQW1DO0VBQ25DLHFCQUFxQjtFQUNyQiw4QkFBOEI7RUFDOUIsbUJBQW1CO0VBQ25CLGtCQUFrQjtFQUNsQixVQUFVO0VBQ1YsYUFBYTtBQUNmIiwiZmlsZSI6InNyYy9hcHAvc2lnbi11cC9zaWduLXVwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJkaXYuc2hhcmUtYnViYmxlIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xyXG4gIGJveC1zaGFkb3c6IDBweCA3cHggNnB4IDBweCAjQjJCMkIyO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBwYWRkaW5nOiAxMDBweCA5MHB4IDEwMHB4IDkwcHg7XHJcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgd2lkdGg6IDMwJTtcclxuICBoZWlnaHQ6IDQ1MHB4O1xyXG59XHJcbiJdfQ== */");
+            /***/ 
+        }),
+        /***/ "./src/app/sign-up/sign-up.component.ts": 
+        /*!**********************************************!*\
+          !*** ./src/app/sign-up/sign-up.component.ts ***!
+          \**********************************************/
+        /*! exports provided: SignUpComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignUpComponent", function () { return SignUpComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
+            var SignUpComponent = /** @class */ (function () {
+                function SignUpComponent() {
+                    this.username = '';
+                    this.password1 = '';
+                    this.password2 = '';
+                    this.error = '';
+                    this.message = '';
+                }
+                SignUpComponent.prototype.ngOnInit = function () {
+                };
+                SignUpComponent.prototype.login = function (bool) {
+                    _user__WEBPACK_IMPORTED_MODULE_2__["user"].loggedIn = bool;
+                };
+                SignUpComponent.prototype.onKey1 = function (username) { this.username = username; };
+                SignUpComponent.prototype.onKey2 = function (password1) { this.password1 = password1; };
+                SignUpComponent.prototype.onKey3 = function (password2) { this.password2 = password2; };
+                SignUpComponent.prototype.signingUp = function (bool) {
+                    _user__WEBPACK_IMPORTED_MODULE_2__["user"].signingIn = bool;
+                };
+                SignUpComponent.prototype.valid = function () {
+                    if (this.username === '' || this.password1 === '') {
+                        this.error = 'Please Enter Info';
+                        return false;
+                    }
+                    if (this.password1 !== this.password2) {
+                        this.error = 'Passwords do not match!!';
+                        return false;
+                    }
+                    if (!this.checkUser()) {
+                        this.error = 'Username already taken';
+                        return false;
+                    }
+                    return true;
+                };
+                SignUpComponent.prototype.checkUser = function () {
+                    return true; //eventually this will check against user service
+                };
+                SignUpComponent.prototype.display = function () {
+                    this.message = this.error;
+                };
+                return SignUpComponent;
+            }());
+            SignUpComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-sign-up',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./sign-up.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/sign-up/sign-up.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./sign-up.component.css */ "./src/app/sign-up/sign-up.component.css")).default]
+                })
+            ], SignUpComponent);
             /***/ 
         }),
         /***/ "./src/app/survey-list/survey-list.component.css": 
@@ -8165,7 +8479,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".example-fill-remaining-space {\n  /* This fills the remaining space, by using flexbox.\n  Every toolbar row uses a flexbox row layout. */\n  flex: 1 1 auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3VydmV5LWxpc3Qvc3VydmV5LWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO2dEQUM4QztFQUM5QyxjQUFjO0FBQ2hCIiwiZmlsZSI6InNyYy9hcHAvc3VydmV5LWxpc3Qvc3VydmV5LWxpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLWZpbGwtcmVtYWluaW5nLXNwYWNlIHtcbiAgLyogVGhpcyBmaWxscyB0aGUgcmVtYWluaW5nIHNwYWNlLCBieSB1c2luZyBmbGV4Ym94LlxuICBFdmVyeSB0b29sYmFyIHJvdyB1c2VzIGEgZmxleGJveCByb3cgbGF5b3V0LiAqL1xuICBmbGV4OiAxIDEgYXV0bztcbn1cbiJdfQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = (".example-fill-remaining-space {\r\n  /* This fills the remaining space, by using flexbox.\r\n  Every toolbar row uses a flexbox row layout. */\r\n  flex: 1 1 auto;\r\n}\r\ndiv.inline { float:left; }\r\n.clearFix {overflow:auto;}\r\n.clearBoth { clear:both; }\r\n.share-bubble {\r\n  background-color: #fff;\r\n  box-shadow: 0 0 6px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 0px 15px;\r\n  position: relative;\r\n  vertical-align: top;\r\n  float: left;\r\n  margin: 0px 5px 5px 30px;\r\n}\r\n.surveyBar{\r\n  box-shadow: 0 0 6px #B2B2B2;\r\n  display: inline-block;\r\n  padding: 0 10px;\r\n  position: relative;\r\n  vertical-align: top;\r\n  float: left;\r\n  margin: 5px 5px 0px 30px;\r\n  width:100%;\r\n  height: 150px;\r\n  background:#F2EFF7;\r\n}\r\n.holder{\r\n  margin: 5px 5px 20px 5px;\r\n}\r\nbutton.b1{\r\n  margin: 15px 10px 0px 0px;\r\n  height: 40px;\r\n  background-color: transparent;\r\n  outline: none;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3VydmV5LWxpc3Qvc3VydmV5LWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFO2dEQUM4QztFQUM5QyxjQUFjO0FBQ2hCO0FBQ0EsYUFBYSxVQUFVLEVBQUU7QUFDekIsV0FBVyxhQUFhLENBQUM7QUFDekIsYUFBYSxVQUFVLEVBQUU7QUFDekI7RUFDRSxzQkFBc0I7RUFDdEIsMkJBQTJCO0VBQzNCLHFCQUFxQjtFQUNyQixpQkFBaUI7RUFDakIsa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQixXQUFXO0VBQ1gsd0JBQXdCO0FBQzFCO0FBQ0E7RUFDRSwyQkFBMkI7RUFDM0IscUJBQXFCO0VBQ3JCLGVBQWU7RUFDZixrQkFBa0I7RUFDbEIsbUJBQW1CO0VBQ25CLFdBQVc7RUFDWCx3QkFBd0I7RUFDeEIsVUFBVTtFQUNWLGFBQWE7RUFDYixrQkFBa0I7QUFDcEI7QUFDQTtFQUNFLHdCQUF3QjtBQUMxQjtBQUVBO0VBQ0UseUJBQXlCO0VBQ3pCLFlBQVk7RUFDWiw2QkFBNkI7RUFDN0IsYUFBYTtBQUNmIiwiZmlsZSI6InNyYy9hcHAvc3VydmV5LWxpc3Qvc3VydmV5LWxpc3QuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlLWZpbGwtcmVtYWluaW5nLXNwYWNlIHtcclxuICAvKiBUaGlzIGZpbGxzIHRoZSByZW1haW5pbmcgc3BhY2UsIGJ5IHVzaW5nIGZsZXhib3guXHJcbiAgRXZlcnkgdG9vbGJhciByb3cgdXNlcyBhIGZsZXhib3ggcm93IGxheW91dC4gKi9cclxuICBmbGV4OiAxIDEgYXV0bztcclxufVxyXG5kaXYuaW5saW5lIHsgZmxvYXQ6bGVmdDsgfVxyXG4uY2xlYXJGaXgge292ZXJmbG93OmF1dG87fVxyXG4uY2xlYXJCb3RoIHsgY2xlYXI6Ym90aDsgfVxyXG4uc2hhcmUtYnViYmxlIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xyXG4gIGJveC1zaGFkb3c6IDAgMCA2cHggI0IyQjJCMjtcclxuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgcGFkZGluZzogMHB4IDE1cHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbWFyZ2luOiAwcHggNXB4IDVweCAzMHB4O1xyXG59XHJcbi5zdXJ2ZXlCYXJ7XHJcbiAgYm94LXNoYWRvdzogMCAwIDZweCAjQjJCMkIyO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBwYWRkaW5nOiAwIDEwcHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XHJcbiAgZmxvYXQ6IGxlZnQ7XHJcbiAgbWFyZ2luOiA1cHggNXB4IDBweCAzMHB4O1xyXG4gIHdpZHRoOjEwMCU7XHJcbiAgaGVpZ2h0OiAxNTBweDtcclxuICBiYWNrZ3JvdW5kOiNGMkVGRjc7XHJcbn1cclxuLmhvbGRlcntcclxuICBtYXJnaW46IDVweCA1cHggMjBweCA1cHg7XHJcbn1cclxuXHJcbmJ1dHRvbi5iMXtcclxuICBtYXJnaW46IDE1cHggMTBweCAwcHggMHB4O1xyXG4gIGhlaWdodDogNDBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcclxuICBvdXRsaW5lOiBub25lO1xyXG59XHJcbiJdfQ== */");
             /***/ 
         }),
         /***/ "./src/app/survey-list/survey-list.component.ts": 
@@ -8179,40 +8493,111 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SurveyListComponent", function () { return SurveyListComponent; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            /* harmony import */ var _surveys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../surveys */ "./src/app/surveys.ts");
-            /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
-            /* harmony import */ var _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../bar-graph/bar-graph.component */ "./src/app/bar-graph/bar-graph.component.ts");
+            /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user */ "./src/app/user.ts");
+            /* harmony import */ var _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../bar-graph/bar-graph.component */ "./src/app/bar-graph/bar-graph.component.ts");
+            /* harmony import */ var _surveys__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../surveys */ "./src/app/surveys.ts");
             var SurveyListComponent = /** @class */ (function () {
-                function SurveyListComponent() {
-                    this.surveys = _surveys__WEBPACK_IMPORTED_MODULE_2__["surveys"];
+                function SurveyListComponent(surveysService) {
+                    this.surveysService = surveysService;
+                    this.surveys = [];
+                    this.bgc = [];
+                    this.selected = 'User';
                 }
-                SurveyListComponent.prototype.ngOnInit = function () { };
+                SurveyListComponent.prototype.ngAfterViewInit = function () {
+                    var _this = this;
+                    this.surveysService.fetchSurveys().then(function (data) {
+                        var tmpSurveys = [];
+                        data.forEach(function (survey) {
+                            if (survey.user !== _user__WEBPACK_IMPORTED_MODULE_2__["user"].name) {
+                                tmpSurveys.push(survey);
+                            }
+                        });
+                        _this.drawGraphs(tmpSurveys);
+                    });
+                };
+                SurveyListComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.surveysService.fetchSurveys().then(function (data) {
+                        var tmpSurveys = [];
+                        data.forEach(function (survey) {
+                            if (survey.user !== _user__WEBPACK_IMPORTED_MODULE_2__["user"].name) {
+                                tmpSurveys.push(survey);
+                            }
+                        });
+                        _this.surveys = tmpSurveys;
+                    });
+                    document.body.setAttribute('bgcolor', '#F9F9E3');
+                };
+                SurveyListComponent.prototype.drawGraphs = function (surveys) {
+                    var _this = this;
+                    surveys.forEach(function (survey) {
+                        if (_this.hasAnswered(survey)) {
+                            _this.createGraph(survey);
+                        }
+                    });
+                };
                 SurveyListComponent.prototype.answered = function (option, survey) {
                     survey.answers.push({
-                        user: _user__WEBPACK_IMPORTED_MODULE_3__["user"].name,
+                        user: _user__WEBPACK_IMPORTED_MODULE_2__["user"].name,
                         option: option
                     });
-                    document.getElementById('chart').innerHTML =
-                        '<div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>';
-                    new _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_4__["BarGraphComponent"]().chart.render();
+                    this.createGraph(survey);
+                };
+                SurveyListComponent.prototype.createGraph = function (survey) {
+                    this.bgc.push(new _bar_graph_bar_graph_component__WEBPACK_IMPORTED_MODULE_3__["BarGraphComponent"]());
+                    this.bgc[this.bgc.length - 1].setData(survey);
+                    this.bgc[this.bgc.length - 1].createGraph();
                 };
                 SurveyListComponent.prototype.hasAnswered = function (survey) {
                     var ans = false;
                     survey.answers.forEach(function (answer) {
                         // console.log(survey.question + ' ' + answer.user + ' ' + answer.option + ' ' + user.name);
-                        if (answer.user === _user__WEBPACK_IMPORTED_MODULE_3__["user"].name) {
+                        if (answer.user === _user__WEBPACK_IMPORTED_MODULE_2__["user"].name) {
                             // console.log('true');
                             ans = true;
                         }
                     });
                     return ans;
                 };
+                SurveyListComponent.prototype.changeSelected = function (selected) {
+                    this.selected = selected;
+                };
+                SurveyListComponent.prototype.search = function (searchIn, searchFor) {
+                    var _this = this;
+                    if (searchIn === 'User') {
+                        console.log('searching user: ' + searchFor);
+                        this.surveysService.fetchSurveys().then(function (data) {
+                            var tmpSurveys = [];
+                            data.forEach(function (survey) {
+                                if (survey.user === searchFor) {
+                                    tmpSurveys.push(survey);
+                                }
+                            });
+                            _this.surveys = tmpSurveys;
+                        });
+                    }
+                    else {
+                        this.surveysService.fetchSurveys().then(function (data) {
+                            var tmpSurveys = [];
+                            data.forEach(function (survey) {
+                                if (survey.question.toLowerCase().match(searchFor.toLowerCase())) {
+                                    tmpSurveys.push(survey);
+                                }
+                            });
+                            _this.surveys = tmpSurveys;
+                        });
+                    }
+                };
                 return SurveyListComponent;
             }());
+            SurveyListComponent.ctorParameters = function () { return [
+                { type: _surveys__WEBPACK_IMPORTED_MODULE_4__["SurveysService"] }
+            ]; };
             SurveyListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-survey-list',
                     template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./survey-list.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/survey-list/survey-list.component.html")).default,
+                    providers: [_surveys__WEBPACK_IMPORTED_MODULE_4__["SurveysService"]],
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./survey-list.component.css */ "./src/app/survey-list/survey-list.component.css")).default]
                 })
             ], SurveyListComponent);
@@ -8222,46 +8607,88 @@
         /*!****************************!*\
           !*** ./src/app/surveys.ts ***!
           \****************************/
-        /*! exports provided: surveys */
+        /*! exports provided: SurveysService */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "surveys", function () { return surveys; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SurveysService", function () { return SurveysService; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            var surveys = [
-                {
-                    user: 'Andy',
-                    question: 'Favorite Color?',
-                    options: ['Blue', 'Red', 'Green', 'Yellow'],
-                    answers: [
-                        {
-                            user: 'Andy',
-                            option: 'Blue'
-                        },
-                        {
-                            user: 'Justin',
-                            option: 'Green'
-                        }
-                    ]
-                },
-                {
-                    user: 'Eric',
-                    question: 'Dogs or Cats?',
-                    options: ['Dogs', 'Cats'],
-                    answers: [
-                        {
-                            user: 'Justin',
-                            option: 'Green'
-                        }
-                    ]
-                },
-                {
-                    user: 'Justin',
-                    question: 'Do you like pizza?',
-                    options: ['Yes', 'No', 'Sometimes'],
-                    answers: []
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+            var SurveysService_1;
+            var SurveysService = SurveysService_1 = /** @class */ (function () {
+                function SurveysService(http) {
+                    this.http = http;
                 }
-            ];
+                SurveysService.prototype.fetchSurveys = function () {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var data, error_1;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    _a.trys.push([0, 2, , 3]);
+                                    return [4 /*yield*/, this.http.get(SurveysService_1.SURVEYS_URL).toPromise()];
+                                case 1:
+                                    data = _a.sent();
+                                    return [2 /*return*/, data];
+                                case 2:
+                                    error_1 = _a.sent();
+                                    console.error("Error occurred: " + error_1);
+                                    return [3 /*break*/, 3];
+                                case 3: return [2 /*return*/];
+                            }
+                        });
+                    });
+                };
+                SurveysService.prototype.postSurvey = function (survey) {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var data, error_2;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    _a.trys.push([0, 2, , 3]);
+                                    return [4 /*yield*/, this.http.post(SurveysService_1.SURVEYS_URL, survey)];
+                                case 1:
+                                    data = _a.sent();
+                                    return [2 /*return*/, data];
+                                case 2:
+                                    error_2 = _a.sent();
+                                    console.error("Error occurred: " + error_2);
+                                    return [3 /*break*/, 3];
+                                case 3: return [2 /*return*/];
+                            }
+                        });
+                    });
+                };
+                SurveysService.prototype.answerSurvey = function (survey) {
+                    return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var data, error_3;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    _a.trys.push([0, 2, , 3]);
+                                    return [4 /*yield*/, this.http.put(SurveysService_1.SURVEYS_URL, survey)];
+                                case 1:
+                                    data = _a.sent();
+                                    return [2 /*return*/, data];
+                                case 2:
+                                    error_3 = _a.sent();
+                                    console.error("Error occurred: " + error_3);
+                                    return [3 /*break*/, 3];
+                                case 3: return [2 /*return*/];
+                            }
+                        });
+                    });
+                };
+                return SurveysService;
+            }());
+            SurveysService.ctorParameters = function () { return [
+                { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+            ]; };
+            SurveysService.SURVEYS_URL = 'http://localhost:8090/SurveyService/surveys.json';
+            SurveysService = SurveysService_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+            ], SurveysService);
             /***/ 
         }),
         /***/ "./src/app/top-bar/top-bar.component.css": 
@@ -8316,7 +8743,13 @@
                 name: 'Eric',
                 password: 'login',
                 loggedIn: false,
+                signingIn: false,
                 authenticated: false,
+                friends: [
+                    'Andy',
+                    'Mandy',
+                    'Mark',
+                ]
             };
             /***/ 
         }),
@@ -8372,7 +8805,7 @@
           \***************************/
         /*! no static exports found */
         /***/ (function (module, exports, __webpack_require__) {
-            module.exports = __webpack_require__(/*! /home/andy/openLiberty/SurveyApp/Survey-app/WebappService/webappsrc/src/main.ts */ "./src/main.ts");
+            module.exports = __webpack_require__(/*! C:\Users\erics\Desktop\Survey\Survey-app\WebappService\webappsrc\src\main.ts */ "./src/main.ts");
             /***/ 
         })
     }, [[0, "runtime", "vendor"]]]);

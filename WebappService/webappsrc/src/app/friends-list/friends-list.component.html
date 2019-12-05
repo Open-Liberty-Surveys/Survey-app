@@ -1,1 +1,41 @@
-<p>friends-list works!</p>
+
+<div *ngFor="let survey of surveys" style="display: inline-flex; width: 48%; float: left">
+
+  <div class = "holder" style="height: 340px; width: 100%;">
+
+    <div class = "surveyBar">
+
+      <div style="display: inline-flex;">
+        <div style="margin: 10px 15px 0px 0px;">
+          <img src = "assets/{{survey.user}}.png" alt = "assets/{{survey.user}}.png" width="45" height="45" style="border-radius: 50%;">
+        </div>
+        <h3>
+          User: {{ survey.user }}
+        </h3>
+      </div>
+
+      <h2>
+        Question: {{ survey.question }}
+      </h2>
+    </div>
+
+    <div class = "share-bubble" style="height: 200px; width: 100%; z-index:1;">
+
+      <div *ngIf="!hasAnswered(survey)" style="z-index:0;">
+        <p *ngFor="let option of survey.options" style="display: inline-flex; width: 40%; z-index:1;">
+          <button (click)="answered(option, survey)">
+            {{ option }}
+          </button>
+        </p>
+      </div>
+
+      <div id="{{survey.id}}" style = "height: 200px; width: 90%;z-index:1;"></div>
+
+    </div>
+
+    <div style = "height: 20px; width: 100%; margin: 300px 0px 0px 30px; z-index:99; color: #000000;
+    border-bottom:1.5px solid; border-color:#DBDBDB;">
+
+    </div>
+  </div >
+</div>

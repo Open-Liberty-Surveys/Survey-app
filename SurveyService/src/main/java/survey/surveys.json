@@ -1,0 +1,113 @@
+[
+  {
+    "user": "Andy",
+    "question": "Favorite Color?",
+    "options": ["Blue", "Red", "Green", "Yellow", "Purple", "Orange"],
+    "answers": [
+      {
+        "user": "Andy",
+        "option": "Blue"
+      },
+      {
+        "user": "Justin",
+        "option": "Green"
+      }
+    ],
+    "id": "245345352"
+  },
+  {
+    "user": "Eric",
+    "question": "Dogs or Cats?",
+    "options": ["Dogs", "Cats"],
+    "answers": [
+      {
+        "user": "Eric",
+        "option": "Dogs"
+      }
+    ],
+    "id": "234324234"
+  },
+  {
+    "user": "Justin",
+    "question": "Do you like pizza?",
+    "options": ["Yes", "No", "Sometimes"],
+    "answers": [],
+    "id": "231231234728123"
+  },
+  {
+    "user": "Eric",
+    "question": "Beans?",
+    "options":  ["Baked", "Kidney", "Pinto", "jelly"],
+    "answers": [],
+    "id": "23123568568123123"
+  },
+  {
+    "user": "Eric",
+    "question": "Are you excited for winter break?",
+    "options": ["yes!", "kinda", "not at all"],
+    "answers": [],
+    "id": "23123561157657"
+  },
+  {
+    "user": "Eric",
+    "question": "What superpower do you want most?",
+    "options": ["flight", "laser vision", "super strength", "super speed", "talk to fish"],
+    "answers": [],
+    "id": "2453647565457657"
+  },
+  {
+    "user": "Mandy",
+    "question": "Do you like squirrels?",
+    "options": ["Yes", "No"],
+    "answers": [],
+    "id": "2312312367857123"
+  },
+  {
+    "user": "Ben",
+    "question": "Do you want to travel to China?",
+    "options": ["Yes", "No", "Maybe"],
+    "answers": [
+      {
+        "user": "Andy",
+        "option": "No"
+      },
+      {
+        "user": "Ben",
+        "option": "No"
+      },
+      {
+        "user": "Mark",
+        "option": "No"
+      },
+      {"user": "Justin",
+        "option": "No"
+      },
+      {
+        "user": "Mandy",
+        "option": "Yes"
+      }
+    ],
+    "id": "2768623123123"
+  },
+  {
+    "user": "Mark",
+    "question": "Favorite kind of paper.",
+    "options": ["Tissue", "Printer", "Cardstock","Rice"],
+    "answers": [
+      {
+        "user": "Mandy",
+        "option": "Cardstock"
+      },
+      {
+        "user": "Ben",
+        "option": "Printer"
+      },
+      {
+        "user": "Justin",
+        "option": "Printer"
+      }
+    ],
+    "id": "2312315523123"
+  }
+
+]

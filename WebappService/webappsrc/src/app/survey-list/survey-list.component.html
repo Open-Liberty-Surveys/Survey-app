@@ -1,3 +1,22 @@
+<div style = "margin: 0px 0px 0px 35px;">
+  <div style="display: inline-flex; width: 100%">
+
+    <mat-form-field style="width: 100%">
+      <input maxlength = "200" matInput placeholder="Search {{selected}}" #entered>
+    </mat-form-field>
+
+    <mat-form-field style="float: right;">
+      <mat-select #select [(value)]=selected placeholder="Select">
+        <mat-option #option1 (onSelectionChange)="changeSelected(option1.value)" value="User">User</mat-option>
+        <mat-option #option2 (onSelectionChange)="changeSelected(option2.value)" value="Key word">Key Word</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button (click)="search(select.value, entered.value)" class="b1" style="margin-right: 25px">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+</div>
 
 <div *ngFor="let survey of surveys" style="display: inline-flex; width: 48%; float: left">
 
@@ -33,9 +52,8 @@
 
     </div>
 
-    <div style = "height: 20px; width: 100%; margin: 300px 0px 0px 30px; z-index:99; color: #000000;
-    border-bottom:1.5px solid; border-color:#DBDBDB;">
+    <!--<div style = "height: 20px; width: 100%; margin: 300px 0px 0px 30px; z-index:99; color: #000000;
+    border-bottom:1.5px solid; border-color:#DBDBDB;"></div>-->
 
-    </div>
   </div >
 </div>

@@ -1,37 +1,37 @@
-export const surveys = [
-  {
-    user: 'Andy',
-    question: 'Favorite Color?',
-    options: ['Blue', 'Red', 'Green', 'Yellow', 'Purple', 'Orange'],
-    answers: [
-      {
-      user: 'Andy',
-      option: 'Blue'
-      },
-      {
-        user: 'Justin',
-        option: 'Green'
-      }
-    ],
-    id: '245345352'
-  },
-  {
-    user: 'Eric',
-    question: 'Dogs or Cats?',
-    options: ['Dogs', 'Cats'],
-    answers: [
-      {
-        user: 'Eric',
-        option: 'Dogs'
-      }
-    ],
-    id: '234324234'
-  },
-  {
-    user: 'Justin',
-    question: 'Do you like pizza?',
-    options: ['Yes', 'No', 'Sometimes'],
-    answers: [],
-    id: '23123123123'
-  },
-];
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {catchError} from "rxjs/operators";
+
+@Injectable()
+export class SurveysService {
+  constructor(private http: HttpClient) { }
+
+  private static SURVEYS_URL = 'http://localhost:8090/SurveyService/surveys.json';
+
+  async fetchSurveys() {
+    try {
+      const data: any = await this.http.get(SurveysService.SURVEYS_URL).toPromise();
+      return data;
+    } catch (error) {
+      console.error(`Error occurred: ${error}`);
+    }
+  }
+
+  async postSurvey(survey) {
+    try {
+      const data: any = await this.http.post(SurveysService.SURVEYS_URL, survey);
+      return data;
+    } catch (error) {
+      console.error(`Error occurred: ${error}`);
+    }
+  }
+
+  async answerSurvey(survey) {
+    try {
+      const data: any = await this.http.put(SurveysService.SURVEYS_URL, survey);
+      return data;
+    } catch (error) {
+      console.error(`Error occurred: ${error}`);
+    }
+  }
+}

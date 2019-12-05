@@ -1,0 +1,35 @@
+<div class = "share-bubble" style="margin-left: 35%; margin-top: 60px; float:left">
+  {{login(false)}}
+  <label>Enter Username: </label>
+  <input #box1 (keyup)="onKey1(box1.value)" style="width: 100%">
+  <label>Enter Password: </label>
+  <input #box2 type="password" (keyup)="onKey2(box2.value)" style="width: 100%">
+  <label>Re-Enter Password: </label>
+  <input #box3 type="password" (keyup)="onKey3(box3.value)" style="width: 100%; margin-bottom: 60px">
+
+  <div>
+      <div style="display: inline-flex; width: 100%;">
+
+        <nav>
+          <button (click)="signingUp(false)" routerLink=".." routerLinkActive="active" style="margin-right: 73px">Cancel</button>
+        </nav>
+
+        <div style="width: 100%"></div>
+
+        <div *ngIf="valid()">
+          <nav>
+            <button (click)="signingUp(false)" routerLink=".." routerLinkActive="active" style="margin-right: 90px">Submit</button>
+          </nav>
+        </div>
+
+        <div *ngIf="!valid()">
+          <nav>
+            <button (click)="display()" style="margin-right: 90px">Submit</button>
+          </nav>
+        </div>
+      </div>
+
+      <br><br>
+      <label class= "error">{{message}}</label>
+  </div>
+</div>
