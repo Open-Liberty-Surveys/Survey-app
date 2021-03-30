@@ -9,7 +9,7 @@ The webapp itself is made using AngularJS, and connects to the survay service to
 Login Page:
 ![image](https://user-images.githubusercontent.com/56443205/113068422-44c2d400-918c-11eb-90c4-00a7a89f4408.png)
 
-Once you log in you're directed to the search page where all surveys appear and searching them by user or keyword is possible:
+Once you log in you're directed to the search page where all surveys appear and searching them by user or keyword is possible.
 The topbar is used to navigate to the different pages.
 ![image](https://user-images.githubusercontent.com/56443205/113068547-7c318080-918c-11eb-9c76-2d09229f28f7.png)
 
